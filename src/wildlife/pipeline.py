@@ -238,6 +238,8 @@ class WildlifePipeline:
                     logits_1d = arr_ov[idx]
                 else:
                     logits_1d = arr_ov.reshape(-1)[:20]
+            elif hasattr(self.classifier, "forward_logits_rgb"):
+                logits_1d = self.classifier.forward_logits_rgb(crop_512)[0]
             else:
                 chw = preprocess_rgb_for_model(
                     crop_512, image_size=self.classifier_input_size, is_train=False

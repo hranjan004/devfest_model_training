@@ -43,7 +43,15 @@ class WildlifePredictor:
 
         test_mode = os.environ.get("WILDLIFE_TEST_MODE", "1") == "1"
 
-        if checkpoint_path and Path(checkpoint_path).exists():
+        from wildlife.models.bioclip2_serving import load_from_env
+
+        bioclip = load_from_env([r.class_id for r in load_species_taxonomy()])
+        if bioclip is not None:
+            self.model = bioclip
+            self.model_version = f"species-v2.0-{bioclip.tier}-bioclip2"
+            if os.environ.get("WILDLIFE_TEMPERATURE"):
+                self.temperature = float(os.environ["WILDLIFE_TEMPERATURE"])
+        elif checkpoint_path and Path(checkpoint_path).exists():
             self.model, payload = load_v2_checkpoint(
                 Path(checkpoint_path),
                 expected_detector_version=expected_detector_version,
@@ -68,6 +76,10 @@ class WildlifePredictor:
             tau_det=0.25,
             test_mode=True,
         )
+        if not test_mode and hasattr(self.detector, "_try_load_pytorch_wildlife"):
+            # Load MegaDetector weights on the main thread at startup; lazy loading inside a
+            # FastAPI worker thread hangs the first request on macOS/MPS.
+            self.detector._try_load_pytorch_wildlife()
         self.gate = UnknownSpeciesGate.from_config()
         self.argon = ArgonMultimodalAssistant(enable_live_api=enable_live_argon)
         self.species_records = load_species_taxonomy()

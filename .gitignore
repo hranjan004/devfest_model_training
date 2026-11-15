@@ -40,3 +40,7 @@ venv/
 .DS_Store
 .idea/
 .vscode/
+
+# Local image caches (scripts/local_bioclip2_t1.py)
+data/cache/
+*.pth*.tmp

@@ -126,11 +126,13 @@ def _parse_exif_orientation(tiff: bytes) -> int:
         return 1
     endian = tiff[:2]
     if endian == b"II":
-        fmt_h, fmt_i = "<H", "<I"
+        order = "<"
     elif endian == b"MM":
-        fmt_h, fmt_i = ">H", ">I"
+        order = ">"
     else:
         return 1
+    # The byte-order character may only lead a struct format ("<HHI", never "<H<H<I").
+    fmt_h, fmt_i, fmt_entry = order + "H", order + "I", order + "HHI"
     ifd_offset = struct.unpack(fmt_i, tiff[4:8])[0]
     if ifd_offset + 2 > len(tiff):
         return 1
@@ -139,7 +141,7 @@ def _parse_exif_orientation(tiff: bytes) -> int:
     for _ in range(num_entries):
         if pos + 12 > len(tiff):
             break
-        tag, field_type, count = struct.unpack(fmt_h + fmt_h + fmt_i, tiff[pos : pos + 8])
+        tag, field_type, count = struct.unpack(fmt_entry, tiff[pos : pos + 8])
         if tag == 0x0112 and field_type == 3 and count >= 1:
             val = struct.unpack(fmt_h, tiff[pos + 8 : pos + 10])[0]
             if 1 <= val <= 8:
