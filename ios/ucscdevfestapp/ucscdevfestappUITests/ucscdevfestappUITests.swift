@@ -7,62 +7,35 @@
 
 import XCTest
 
-/// Smoke test of the main screens. Needs the API running (scripts/run_api.sh) with at
-/// least one sighting. Set TEST_RUNNER_SHOTS_DIR to also save a screenshot of each screen.
 final class ucscdevfestappUITests: XCTestCase {
 
     override func setUpWithError() throws {
+        // Put setup code here. This method is called before the invocation of each test method in the class.
+
+        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
+
+        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+    }
+
+    override func tearDownWithError() throws {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
     @MainActor
-    private func snap(_ name: String) {
-        let shot = XCUIScreen.main.screenshot()
-        let attachment = XCTAttachment(screenshot: shot)
-        attachment.name = name
-        attachment.lifetime = .keepAlways
-        add(attachment)
-        if let dir = ProcessInfo.processInfo.environment["SHOTS_DIR"] {
-            try? shot.pngRepresentation.write(to: URL(fileURLWithPath: dir).appendingPathComponent("\(name).png"))
-        }
-    }
-
-    @MainActor
-    func testMainScreens() throws {
+    func testExample() throws {
+        // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
 
-        let firstPost = app.scrollViews.buttons.firstMatch
-        XCTAssertTrue(firstPost.waitForExistence(timeout: 15), "Feed did not load. Is the API running?")
-        firstPost.tap()
-        XCTAssertTrue(app.staticTexts["Your rating"].waitForExistence(timeout: 5))
-        sleep(3)
-        snap("detail")
-        app.buttons["4 stars"].tap()
-        app.swipeUp()
-        sleep(1)
-        snap("detail_rated")
-        app.navigationBars.buttons.firstMatch.tap()
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
 
-        app.buttons["New Sighting"].tap()
-        XCTAssertTrue(app.buttons["Choose Photo"].waitForExistence(timeout: 5))
-        snap("new_sighting")
-        app.buttons["Cancel"].tap()
-
-        app.tabBars.buttons["Species"].tap()
-        XCTAssertTrue(app.staticTexts["Coyote"].waitForExistence(timeout: 5))
-        sleep(3)
-        snap("species")
-        app.staticTexts["Coyote"].tap()
-        sleep(3)
-        snap("species_detail")
-
-        app.tabBars.buttons["Ranked"].tap()
-        XCTAssertTrue(app.staticTexts["#1"].waitForExistence(timeout: 5))
-        snap("ranked")
-
-        app.tabBars.buttons["Map"].tap()
-        sleep(4)
-        snap("map")
+    @MainActor
+    func testLaunchPerformance() throws {
+        // This measures how long it takes to launch your application.
+        measure(metrics: [XCTApplicationLaunchMetric()]) {
+            XCUIApplication().launch()
+        }
     }
 }

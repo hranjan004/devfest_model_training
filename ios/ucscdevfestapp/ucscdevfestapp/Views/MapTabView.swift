@@ -1,164 +1,172 @@
-//
-//  MapTabView.swift
-//  ucscdevfestapp
-//
-//  Map of every sighting that has a location. Tap a pin to preview it, tap the
-//  preview to open the post. Google Maps when a key is configured, Apple Maps otherwise.
-//
-
 import SwiftUI
 import MapKit
-import GoogleMaps
 
+/// One map joins the feed's named sightings to their full posts and comments.
 struct MapTabView: View {
     @Environment(SightingStore.self) private var store
+    @State private var position: MapCameraPosition = .region(Self.campus)
     @State private var selectedID: String?
+    @State private var query = ""
+    @FocusState private var searching: Bool
 
-    private var located: [Animal] {
-        store.animals.filter(\.hasLocation)
+    private static let campus = MKCoordinateRegion(
+        center: CLLocationCoordinate2D(latitude: 36.995, longitude: -122.06),
+        span: MKCoordinateSpan(latitudeDelta: 0.065, longitudeDelta: 0.065)
+    )
+
+    private var sightings: [Sighting] {
+        let text = query.trimmingCharacters(in: .whitespacesAndNewlines)
+        return store.sightings.filter { s in
+            s.latitude.isFinite && s.longitude.isFinite && abs(s.latitude) <= 90 && abs(s.longitude) <= 180 &&
+            (text.isEmpty || s.title.localizedCaseInsensitiveContains(text) || s.speciesLabel.localizedCaseInsensitiveContains(text) || s.place.localizedCaseInsensitiveContains(text))
+        }
     }
+    private var selected: Sighting? { sightings.first { $0.id == selectedID } }
 
     var body: some View {
         NavigationStack {
-            ZStack(alignment: .bottom) {
-                if AppConfig.googleMapsAPIKey.isEmpty {
-                    AppleSightingsMap(animals: located, selectedID: $selectedID)
-                } else {
-                    GoogleSightingsMap(animals: located, selectedID: $selectedID)
-                        .ignoresSafeArea(edges: .top)
+            VStack(spacing: 0) {
+                HStack(spacing: 10) {
+                    Image(systemName: "magnifyingglass").foregroundStyle(.secondary)
+                    TextField("Find a name, species or place", text: $query)
+                        .accessibilityIdentifier("mapSearch")
+                        .focused($searching)
+                        .submitLabel(.search)
+                        .onSubmit { searching = false }
+                    if !query.isEmpty {
+                        Button { query = ""; searching = false } label: { Image(systemName: "xmark.circle.fill") }
+                            .accessibilityLabel("Clear map search")
+                    }
+                }
+                .padding(12)
+                .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 14))
+                .padding(.horizontal).padding(.bottom, 10)
+
+                Map(position: $position, selection: $selectedID) {
+                    ForEach(sightings) { sighting in
+                        Marker(sighting.title, coordinate: coordinate(sighting))
+                            .tint(markerColor(sighting))
+                            .tag(sighting.id)
+                    }
+                }
+                .mapControls { MapCompass(); MapScaleView() }
+                .accessibilityIdentifier("sightingsMap")
+                .frame(minHeight: searching ? 120 : 220)
+                .overlay(alignment: .topLeading) {
+                    Text("\(sightings.count) \(sightings.count == 1 ? "sighting" : "sightings")")
+                        .font(.caption.weight(.semibold))
+                        .padding(.horizontal, 12).padding(.vertical, 7)
+                        .background(.regularMaterial, in: Capsule())
+                        .padding(12)
+                }
+                .onChange(of: selectedID) { _, value in
+                    if value != nil { searching = false }
+                }
+                .onChange(of: query) {
+                    selectedID = nil
+                    position = .automatic
                 }
 
-                if let id = selectedID, let animal = store.animal(id: id) {
-                    NavigationLink(value: animal.id) {
-                        MapPreviewCard(animal: animal)
+                if let s = selected {
+                    NavigationLink(value: s.id) {
+                        MapSightingPreview(sighting: s)
                     }
                     .buttonStyle(.plain)
-                    .padding()
-                } else if located.isEmpty {
-                    Text(store.errorMessage ?? "No sightings with a location yet")
-                        .font(.subheadline)
-                        .padding(12)
-                        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
-                        .padding()
+                    .accessibilityIdentifier("mapPost-" + s.id)
+                    .padding(12)
                 }
+
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack {
+                        Text("Sightings on this map").font(.wHeading)
+                        Spacer()
+                        Text("Tap a name to locate").font(.caption).foregroundStyle(.secondary)
+                    }
+                    .padding(.horizontal)
+                    if sightings.isEmpty {
+                        Text("No matching sightings. Try another name or species.")
+                            .font(.subheadline).foregroundStyle(.secondary).padding()
+                    } else {
+                        ScrollView {
+                            LazyVStack(spacing: 0) {
+                                ForEach(sightings) { s in
+                                    Button { select(s) } label: {
+                                        HStack(spacing: 10) {
+                                            Image(systemName: selectedID == s.id ? "mappin.circle.fill" : "mappin.circle")
+                                                .foregroundStyle(Color.redwood)
+                                            VStack(alignment: .leading, spacing: 2) {
+                                                Text(s.title).font(.subheadline.weight(.semibold)).foregroundStyle(.primary)
+                                                Text(s.speciesLabel + " · " + s.place).font(.caption).foregroundStyle(.secondary).lineLimit(1)
+                                            }
+                                            Spacer()
+                                            if selectedID == s.id { Image(systemName: "checkmark").foregroundStyle(Color.redwood) }
+                                        }
+                                        .padding(.horizontal).padding(.vertical, 10)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .background(selectedID == s.id ? Color.redwood.opacity(0.08) : .clear)
+                                    }
+                                    .buttonStyle(.plain)
+                                    .accessibilityIdentifier("mapSighting-" + s.id)
+                                }
+                            }
+                        }
+                        .frame(height: searching ? 100 : (selected == nil ? 190 : 105))
+                    }
+                }
+                .padding(.top, 12)
+                .background(Color(.systemGroupedBackground))
             }
+            .background(Color(.systemGroupedBackground))
             .navigationTitle("Map")
             .navigationBarTitleDisplayMode(.inline)
-            .navigationDestination(for: String.self) { id in
-                AnimalDetailView(animalID: id)
+            .toolbar {
+                ToolbarItemGroup(placement: .topBarTrailing) {
+                    Button("Campus") { query = ""; selectedID = nil; searching = false; position = .region(Self.campus) }
+                    Button("All") { query = ""; searching = false; position = .automatic }
+                }
             }
+            .navigationDestination(for: Sighting.ID.self) { id in
+                SightingDetailView(id: id)
+            }
+        }
+    }
+
+    private func markerColor(_ s: Sighting) -> Color {
+        guard let group = s.primary?.group else { return .redwood }
+        return Color.group(group)
+    }
+    private func coordinate(_ s: Sighting) -> CLLocationCoordinate2D {
+        CLLocationCoordinate2D(latitude: s.latitude, longitude: s.longitude)
+    }
+    private func select(_ s: Sighting) {
+        searching = false
+        selectedID = s.id
+        withAnimation(.easeInOut(duration: 0.5)) {
+            position = .region(MKCoordinateRegion(center: coordinate(s), span: MKCoordinateSpan(latitudeDelta: 0.012, longitudeDelta: 0.012)))
         }
     }
 }
 
-/// Small card shown above the tab bar for the selected pin.
-private struct MapPreviewCard: View {
-    let animal: Animal
+private struct MapSightingPreview: View {
+    @Environment(SightingStore.self) private var store
+    let sighting: Sighting
 
     var body: some View {
         HStack(spacing: 12) {
-            RemotePhoto(url: animal.imageURL, symbolSize: 20)
-                .frame(width: 64, height: 64)
-                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-            VStack(alignment: .leading, spacing: 2) {
-                Text(animal.name)
-                    .font(.headline)
-                Text(animal.species)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                Label(animal.ratingText, systemImage: "star.fill")
-                    .font(.caption)
-                    .foregroundStyle(.orange)
+            Color.canopy
+                .frame(width: 70, height: 70)
+                .overlay { PhotoImage(source: store.photoSource(sighting)) }
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+            VStack(alignment: .leading, spacing: 3) {
+                Text(sighting.title).font(.headline).lineLimit(1)
+                Text(sighting.speciesLabel).font(.subheadline).foregroundStyle(.secondary).lineLimit(1)
+                Text(sighting.locationIsPrecise == true ? "Marked location · Open post" : "Approximate location · Open post")
+                    .font(.caption).foregroundStyle(.secondary)
             }
-            Spacer()
-            Image(systemName: "chevron.right")
-                .foregroundStyle(.tertiary)
+            Spacer(minLength: 0)
+            Image(systemName: "chevron.right").foregroundStyle(Color.redwood)
         }
-        .padding(10)
-        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
-    }
-}
-
-// MARK: - Google Maps
-
-private struct GoogleSightingsMap: UIViewRepresentable {
-    let animals: [Animal]
-    @Binding var selectedID: String?
-
-    func makeCoordinator() -> Coordinator { Coordinator(self) }
-
-    func makeUIView(context: Context) -> GMSMapView {
-        let options = GMSMapViewOptions()
-        options.camera = GMSCameraPosition(
-            latitude: AppConfig.campusLatitude, longitude: AppConfig.campusLongitude, zoom: 14
-        )
-        let mapView = GMSMapView(options: options)
-        mapView.delegate = context.coordinator
-        mapView.settings.compassButton = true
-        return mapView
-    }
-
-    func updateUIView(_ mapView: GMSMapView, context: Context) {
-        let coordinator = context.coordinator
-        coordinator.parent = self
-        let ids = animals.map(\.id)
-        guard ids != coordinator.shownIDs else { return }
-        coordinator.shownIDs = ids
-        mapView.clear()
-        var bounds = GMSCoordinateBounds()
-        for animal in animals {
-            guard let latitude = animal.latitude, let longitude = animal.longitude else { continue }
-            let position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-            let marker = GMSMarker(position: position)
-            marker.title = animal.name
-            marker.snippet = animal.species
-            marker.userData = animal.id
-            marker.map = mapView
-            bounds = bounds.includingCoordinate(position)
-        }
-        if animals.count > 1 {
-            mapView.moveCamera(GMSCameraUpdate.fit(bounds, withPadding: 60))
-        } else if let only = animals.first, let latitude = only.latitude, let longitude = only.longitude {
-            mapView.camera = GMSCameraPosition(latitude: latitude, longitude: longitude, zoom: 15)
-        }
-    }
-
-    final class Coordinator: NSObject, GMSMapViewDelegate {
-        var parent: GoogleSightingsMap
-        var shownIDs: [String] = []
-
-        init(_ parent: GoogleSightingsMap) { self.parent = parent }
-
-        func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-            parent.selectedID = marker.userData as? String
-            return false   // keep the default behaviour: centre the pin and show its title
-        }
-
-        func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-            parent.selectedID = nil
-        }
-    }
-}
-
-// MARK: - Apple Maps fallback (no Google key configured)
-
-private struct AppleSightingsMap: View {
-    let animals: [Animal]
-    @Binding var selectedID: String?
-    @State private var position: MapCameraPosition = .automatic
-
-    var body: some View {
-        Map(position: $position, selection: $selectedID) {
-            ForEach(animals) { animal in
-                if let latitude = animal.latitude, let longitude = animal.longitude {
-                    Marker(
-                        animal.name,
-                        coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                    )
-                    .tag(animal.id)
-                }
-            }
-        }
-        .onChange(of: animals.map(\.id)) { position = .automatic }
+        .padding(12)
+        .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 16))
     }
 }

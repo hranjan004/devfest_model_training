@@ -1,0 +1,344 @@
+[
+  {
+    "class_id": "M01",
+    "index": 0,
+    "common_name": "Black-tailed deer",
+    "scientific_name": "Odocoileus hemionus",
+    "subspecies_filter": "Odocoileus hemionus columbianus",
+    "group": "large_mammal",
+    "target_count": 1000,
+    "resolved_taxon_id": 42221,
+    "query_name": "Odocoileus hemionus columbianus"
+  },
+  {
+    "class_id": "M02",
+    "index": 1,
+    "common_name": "Coyote",
+    "scientific_name": "Canis latrans",
+    "group": "large_mammal",
+    "target_count": 1000,
+    "resolved_taxon_id": 42051,
+    "query_name": "Canis latrans"
+  },
+  {
+    "class_id": "M03",
+    "index": 2,
+    "common_name": "Bobcat",
+    "scientific_name": "Lynx rufus",
+    "group": "large_mammal",
+    "target_count": 1000,
+    "resolved_taxon_id": 41976,
+    "query_name": "Lynx rufus"
+  },
+  {
+    "class_id": "M04",
+    "index": 3,
+    "common_name": "Gray fox",
+    "scientific_name": "Urocyon cinereoargenteus",
+    "group": "large_mammal",
+    "target_count": 1000,
+    "resolved_taxon_id": 42076,
+    "query_name": "Urocyon cinereoargenteus"
+  },
+  {
+    "class_id": "M05",
+    "index": 4,
+    "common_name": "Northern raccoon",
+    "scientific_name": "Procyon lotor",
+    "group": "small_mammal",
+    "target_count": 1000,
+    "resolved_taxon_id": 41663,
+    "query_name": "Procyon lotor"
+  },
+  {
+    "class_id": "M06",
+    "index": 5,
+    "common_name": "Striped skunk",
+    "scientific_name": "Mephitis mephitis",
+    "group": "small_mammal",
+    "target_count": 1000,
+    "resolved_taxon_id": 41880,
+    "query_name": "Mephitis mephitis"
+  },
+  {
+    "class_id": "M07",
+    "index": 6,
+    "common_name": "California ground squirrel",
+    "scientific_name": "Otospermophilus beecheyi",
+    "group": "small_mammal",
+    "target_count": 1000,
+    "resolved_taxon_id": 180007,
+    "query_name": "Otospermophilus beecheyi"
+  },
+  {
+    "class_id": "M08",
+    "index": 7,
+    "common_name": "Eastern gray squirrel",
+    "scientific_name": "Sciurus carolinensis",
+    "group": "small_mammal",
+    "target_count": 1000,
+    "resolved_taxon_id": 46017,
+    "query_name": "Sciurus carolinensis"
+  },
+  {
+    "class_id": "M09",
+    "index": 8,
+    "common_name": "Western gray squirrel",
+    "scientific_name": "Sciurus griseus",
+    "group": "small_mammal",
+    "target_count": 1000,
+    "resolved_taxon_id": 46023,
+    "query_name": "Sciurus griseus"
+  },
+  {
+    "class_id": "M10",
+    "index": 9,
+    "common_name": "Brush rabbit",
+    "scientific_name": "Sylvilagus bachmani",
+    "group": "small_mammal",
+    "target_count": 1000,
+    "resolved_taxon_id": 43112,
+    "query_name": "Sylvilagus bachmani"
+  },
+  {
+    "class_id": "B01",
+    "index": 10,
+    "common_name": "Wild turkey",
+    "scientific_name": "Meleagris gallopavo",
+    "group": "bird",
+    "target_count": 1000,
+    "resolved_taxon_id": 906,
+    "query_name": "Meleagris gallopavo"
+  },
+  {
+    "class_id": "B02",
+    "index": 11,
+    "common_name": "California quail",
+    "scientific_name": "Callipepla californica",
+    "group": "bird",
+    "target_count": 1000,
+    "resolved_taxon_id": 1409,
+    "query_name": "Callipepla californica"
+  },
+  {
+    "class_id": "B03",
+    "index": 12,
+    "common_name": "Steller's jay",
+    "scientific_name": "Cyanocitta stelleri",
+    "group": "bird",
+    "target_count": 1000,
+    "resolved_taxon_id": 8234,
+    "query_name": "Cyanocitta stelleri"
+  },
+  {
+    "class_id": "B04",
+    "index": 13,
+    "common_name": "California scrub-jay",
+    "scientific_name": "Aphelocoma californica",
+    "group": "bird",
+    "target_count": 1000,
+    "resolved_taxon_id": 506118,
+    "query_name": "Aphelocoma californica"
+  },
+  {
+    "class_id": "B05",
+    "index": 14,
+    "common_name": "Common raven",
+    "scientific_name": "Corvus corax",
+    "group": "bird",
+    "target_count": 1000,
+    "resolved_taxon_id": 8010,
+    "query_name": "Corvus corax"
+  },
+  {
+    "class_id": "B06",
+    "index": 15,
+    "common_name": "Acorn woodpecker",
+    "scientific_name": "Melanerpes formicivorus",
+    "group": "bird",
+    "target_count": 1000,
+    "resolved_taxon_id": 18209,
+    "query_name": "Melanerpes formicivorus"
+  },
+  {
+    "class_id": "B07",
+    "index": 16,
+    "common_name": "Anna's hummingbird",
+    "scientific_name": "Calypte anna",
+    "group": "bird",
+    "target_count": 1000,
+    "resolved_taxon_id": 6317,
+    "query_name": "Calypte anna"
+  },
+  {
+    "class_id": "B08",
+    "index": 17,
+    "common_name": "American robin",
+    "scientific_name": "Turdus migratorius",
+    "group": "bird",
+    "target_count": 1000,
+    "resolved_taxon_id": 12727,
+    "query_name": "Turdus migratorius"
+  },
+  {
+    "class_id": "B09",
+    "index": 18,
+    "common_name": "Dark-eyed junco",
+    "scientific_name": "Junco hyemalis",
+    "group": "bird",
+    "target_count": 1000,
+    "resolved_taxon_id": 10094,
+    "query_name": "Junco hyemalis"
+  },
+  {
+    "class_id": "B10",
+    "index": 19,
+    "common_name": "Spotted towhee",
+    "scientific_name": "Pipilo maculatus",
+    "group": "bird",
+    "target_count": 1000,
+    "resolved_taxon_id": 9420,
+    "query_name": "Pipilo maculatus"
+  },
+  {
+    "class_id": "I01",
+    "index": 20,
+    "common_name": "Banana slug (genus)",
+    "scientific_name": "Ariolimax",
+    "group": "gastropod",
+    "taxonomic_rank": "genus",
+    "target_count": 358,
+    "resolved_taxon_id": 47777,
+    "query_name": "Ariolimax"
+  },
+  {
+    "class_id": "T01",
+    "index": 21,
+    "common_name": "Coast redwood",
+    "scientific_name": "Sequoia sempervirens",
+    "group": "tree",
+    "target_count": 1000,
+    "resolved_taxon_id": 47372,
+    "query_name": "Sequoia sempervirens"
+  },
+  {
+    "class_id": "T02",
+    "index": 22,
+    "common_name": "Douglas-fir",
+    "scientific_name": "Pseudotsuga menziesii",
+    "group": "tree",
+    "target_count": 1000,
+    "resolved_taxon_id": 48256,
+    "query_name": "Pseudotsuga menziesii"
+  },
+  {
+    "class_id": "T03",
+    "index": 23,
+    "common_name": "Pacific madrone",
+    "scientific_name": "Arbutus menziesii",
+    "group": "tree",
+    "target_count": 1000,
+    "resolved_taxon_id": 51046,
+    "query_name": "Arbutus menziesii"
+  },
+  {
+    "class_id": "T04",
+    "index": 24,
+    "common_name": "Coast live oak",
+    "scientific_name": "Quercus agrifolia",
+    "group": "tree",
+    "target_count": 1000,
+    "resolved_taxon_id": 1663718,
+    "query_name": "Quercus agrifolia"
+  },
+  {
+    "class_id": "T05",
+    "index": 25,
+    "common_name": "Tanoak",
+    "scientific_name": "Notholithocarpus densiflorus",
+    "group": "tree",
+    "target_count": 1000,
+    "resolved_taxon_id": 69823,
+    "query_name": "Notholithocarpus densiflorus"
+  },
+  {
+    "class_id": "T06",
+    "index": 26,
+    "common_name": "California bay",
+    "scientific_name": "Umbellularia californica",
+    "group": "tree",
+    "target_count": 1000,
+    "resolved_taxon_id": 48807,
+    "query_name": "Umbellularia californica"
+  },
+  {
+    "class_id": "T07",
+    "index": 27,
+    "common_name": "Bigleaf maple",
+    "scientific_name": "Acer macrophyllum",
+    "group": "tree",
+    "target_count": 1000,
+    "resolved_taxon_id": 48227,
+    "query_name": "Acer macrophyllum"
+  },
+  {
+    "class_id": "G01",
+    "index": 28,
+    "common_name": "Monarch butterfly",
+    "scientific_name": "Danaus plexippus",
+    "group": "insect",
+    "target_count": 1000,
+    "resolved_taxon_id": 48662,
+    "query_name": "Danaus plexippus"
+  },
+  {
+    "class_id": "G02",
+    "index": 29,
+    "common_name": "Western tiger swallowtail",
+    "scientific_name": "Papilio rutulus",
+    "group": "insect",
+    "target_count": 1000,
+    "resolved_taxon_id": 47226,
+    "query_name": "Papilio rutulus"
+  },
+  {
+    "class_id": "G03",
+    "index": 30,
+    "common_name": "Yellow-faced bumble bee",
+    "scientific_name": "Bombus vosnesenskii",
+    "group": "insect",
+    "target_count": 1000,
+    "resolved_taxon_id": 57689,
+    "query_name": "Bombus vosnesenskii"
+  },
+  {
+    "class_id": "G04",
+    "index": 31,
+    "common_name": "Yellow-spotted millipede",
+    "scientific_name": "Harpaphe haydeniana",
+    "group": "arthropod",
+    "target_count": 1000,
+    "resolved_taxon_id": 47737,
+    "query_name": "Harpaphe haydeniana"
+  },
+  {
+    "class_id": "G05",
+    "index": 32,
+    "common_name": "Convergent lady beetle",
+    "scientific_name": "Hippodamia convergens",
+    "group": "insect",
+    "target_count": 1000,
+    "resolved_taxon_id": 48987,
+    "query_name": "Hippodamia convergens"
+  },
+  {
+    "class_id": "G06",
+    "index": 33,
+    "common_name": "Western yellowjacket",
+    "scientific_name": "Vespula pensylvanica",
+    "group": "insect",
+    "target_count": 1000,
+    "resolved_taxon_id": 61355,
+    "query_name": "Vespula pensylvanica"
+  }
+]

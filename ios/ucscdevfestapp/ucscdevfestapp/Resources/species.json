@@ -1,0 +1,274 @@
+[
+  {
+    "class_id": "M01",
+    "index": 0,
+    "common_name": "Black-tailed deer",
+    "scientific_name": "Odocoileus hemionus",
+    "group": "large_mammal",
+    "campus_habitat": "Meadows, woodland edges"
+  },
+  {
+    "class_id": "M02",
+    "index": 1,
+    "common_name": "Coyote",
+    "scientific_name": "Canis latrans",
+    "group": "large_mammal",
+    "campus_habitat": "Open meadows, woodland"
+  },
+  {
+    "class_id": "M03",
+    "index": 2,
+    "common_name": "Bobcat",
+    "scientific_name": "Lynx rufus",
+    "group": "large_mammal",
+    "campus_habitat": "Forest edges, meadows"
+  },
+  {
+    "class_id": "M04",
+    "index": 3,
+    "common_name": "Gray fox",
+    "scientific_name": "Urocyon cinereoargenteus",
+    "group": "large_mammal",
+    "campus_habitat": "Woodlands, mixed forest"
+  },
+  {
+    "class_id": "M05",
+    "index": 4,
+    "common_name": "Northern raccoon",
+    "scientific_name": "Procyon lotor",
+    "group": "small_mammal",
+    "campus_habitat": "Riparian, disturbed and wooded areas"
+  },
+  {
+    "class_id": "M06",
+    "index": 5,
+    "common_name": "Striped skunk",
+    "scientific_name": "Mephitis mephitis",
+    "group": "small_mammal",
+    "campus_habitat": "Multiple habitats"
+  },
+  {
+    "class_id": "M07",
+    "index": 6,
+    "common_name": "California ground squirrel",
+    "scientific_name": "Otospermophilus beecheyi",
+    "group": "small_mammal",
+    "campus_habitat": "Grasslands, agricultural edges"
+  },
+  {
+    "class_id": "M08",
+    "index": 7,
+    "common_name": "Eastern gray squirrel",
+    "scientific_name": "Sciurus carolinensis",
+    "group": "small_mammal",
+    "campus_habitat": "Developed and forested zones"
+  },
+  {
+    "class_id": "M09",
+    "index": 8,
+    "common_name": "Western gray squirrel",
+    "scientific_name": "Sciurus griseus",
+    "group": "small_mammal",
+    "campus_habitat": "Forested areas"
+  },
+  {
+    "class_id": "M10",
+    "index": 9,
+    "common_name": "Brush rabbit",
+    "scientific_name": "Sylvilagus bachmani",
+    "group": "small_mammal",
+    "campus_habitat": "Chaparral, meadow edges"
+  },
+  {
+    "class_id": "B01",
+    "index": 10,
+    "common_name": "Wild turkey",
+    "scientific_name": "Meleagris gallopavo",
+    "group": "bird",
+    "campus_habitat": "Mixed woodland, open edges"
+  },
+  {
+    "class_id": "B02",
+    "index": 11,
+    "common_name": "California quail",
+    "scientific_name": "Callipepla californica",
+    "group": "bird",
+    "campus_habitat": "Arboretum, open edges"
+  },
+  {
+    "class_id": "B03",
+    "index": 12,
+    "common_name": "Steller's jay",
+    "scientific_name": "Cyanocitta stelleri",
+    "group": "bird",
+    "campus_habitat": "Redwood and mixed forest"
+  },
+  {
+    "class_id": "B04",
+    "index": 13,
+    "common_name": "California scrub-jay",
+    "scientific_name": "Aphelocoma californica",
+    "group": "bird",
+    "campus_habitat": "Chaparral and woodland edge"
+  },
+  {
+    "class_id": "B05",
+    "index": 14,
+    "common_name": "Common raven",
+    "scientific_name": "Corvus corax",
+    "group": "bird",
+    "campus_habitat": "Forest and grassland"
+  },
+  {
+    "class_id": "B06",
+    "index": 15,
+    "common_name": "Acorn woodpecker",
+    "scientific_name": "Melanerpes formicivorus",
+    "group": "bird",
+    "campus_habitat": "Oak and mixed woodland"
+  },
+  {
+    "class_id": "B07",
+    "index": 16,
+    "common_name": "Anna's hummingbird",
+    "scientific_name": "Calypte anna",
+    "group": "bird",
+    "campus_habitat": "Flowering shrubs and edges"
+  },
+  {
+    "class_id": "B08",
+    "index": 17,
+    "common_name": "American robin",
+    "scientific_name": "Turdus migratorius",
+    "group": "bird",
+    "campus_habitat": "Forest edges and lawns"
+  },
+  {
+    "class_id": "B09",
+    "index": 18,
+    "common_name": "Dark-eyed junco",
+    "scientific_name": "Junco hyemalis",
+    "group": "bird",
+    "campus_habitat": "Redwood and mixed forest"
+  },
+  {
+    "class_id": "B10",
+    "index": 19,
+    "common_name": "Spotted towhee",
+    "scientific_name": "Pipilo maculatus",
+    "group": "bird",
+    "campus_habitat": "Chaparral and understory"
+  },
+  {
+    "class_id": "I01",
+    "index": 20,
+    "common_name": "Banana slug (genus)",
+    "scientific_name": "Ariolimax",
+    "group": "gastropod",
+    "campus_habitat": ""
+  },
+  {
+    "class_id": "T01",
+    "index": 21,
+    "common_name": "Coast redwood",
+    "scientific_name": "Sequoia sempervirens",
+    "group": "tree",
+    "campus_habitat": ""
+  },
+  {
+    "class_id": "T02",
+    "index": 22,
+    "common_name": "Douglas-fir",
+    "scientific_name": "Pseudotsuga menziesii",
+    "group": "tree",
+    "campus_habitat": ""
+  },
+  {
+    "class_id": "T03",
+    "index": 23,
+    "common_name": "Pacific madrone",
+    "scientific_name": "Arbutus menziesii",
+    "group": "tree",
+    "campus_habitat": ""
+  },
+  {
+    "class_id": "T04",
+    "index": 24,
+    "common_name": "Coast live oak",
+    "scientific_name": "Quercus agrifolia",
+    "group": "tree",
+    "campus_habitat": ""
+  },
+  {
+    "class_id": "T05",
+    "index": 25,
+    "common_name": "Tanoak",
+    "scientific_name": "Notholithocarpus densiflorus",
+    "group": "tree",
+    "campus_habitat": ""
+  },
+  {
+    "class_id": "T06",
+    "index": 26,
+    "common_name": "California bay",
+    "scientific_name": "Umbellularia californica",
+    "group": "tree",
+    "campus_habitat": ""
+  },
+  {
+    "class_id": "T07",
+    "index": 27,
+    "common_name": "Bigleaf maple",
+    "scientific_name": "Acer macrophyllum",
+    "group": "tree",
+    "campus_habitat": ""
+  },
+  {
+    "class_id": "G01",
+    "index": 28,
+    "common_name": "Monarch butterfly",
+    "scientific_name": "Danaus plexippus",
+    "group": "insect",
+    "campus_habitat": ""
+  },
+  {
+    "class_id": "G02",
+    "index": 29,
+    "common_name": "Western tiger swallowtail",
+    "scientific_name": "Papilio rutulus",
+    "group": "insect",
+    "campus_habitat": ""
+  },
+  {
+    "class_id": "G03",
+    "index": 30,
+    "common_name": "Yellow-faced bumble bee",
+    "scientific_name": "Bombus vosnesenskii",
+    "group": "insect",
+    "campus_habitat": ""
+  },
+  {
+    "class_id": "G04",
+    "index": 31,
+    "common_name": "Yellow-spotted millipede",
+    "scientific_name": "Harpaphe haydeniana",
+    "group": "arthropod",
+    "campus_habitat": ""
+  },
+  {
+    "class_id": "G05",
+    "index": 32,
+    "common_name": "Convergent lady beetle",
+    "scientific_name": "Hippodamia convergens",
+    "group": "insect",
+    "campus_habitat": ""
+  },
+  {
+    "class_id": "G06",
+    "index": 33,
+    "common_name": "Western yellowjacket",
+    "scientific_name": "Vespula pensylvanica",
+    "group": "insect",
+    "campus_habitat": ""
+  }
+]

@@ -7,47 +7,51 @@
 
 import SwiftUI
 
-/// Rankings view — animals sorted by rank.
-/// Figma: centered card with photo, name, and rank; second card below with another photo.
+/// Rankings view — identified sightings ranked by the model's photo rating
+/// (65% photo quality, 35% identification confidence). Uncertain IDs aren't ranked.
+/// Figma: centered card with photo, name, and rank; cards stacked below.
 struct RankedView: View {
     @Environment(SightingStore.self) private var store
-    @State private var sortOption: SortOption = .topRated
+    @State private var group: AnimalGroup? = nil
+
+    private var ranked: [Sighting] {
+        store.sightings
+            .filter { $0.rating != nil && (group == nil || $0.primary?.group == group) }
+            .sorted { ($0.rating ?? 0) > ($1.rating ?? 0) }
+    }
 
     var body: some View {
         NavigationStack {
             ScrollView {
-                if store.animals.isEmpty {
-                    FeedStatusView(emptyMessage: "Rankings appear once sightings are posted and rated.")
-                        .padding(.top, 80)
-                } else {
-                    LazyVStack(spacing: 16) {
-                        ForEach(Array(store.sorted(by: sortOption).enumerated()), id: \.element.id) { index, animal in
-                            NavigationLink(value: animal.id) {
-                                RankedCard(animal: animal, rank: index + 1)
-                            }
-                            .buttonStyle(.plain)
+                LazyVStack(spacing: 16) {
+                    ForEach(Array(ranked.enumerated()), id: \.element.id) { index, sighting in
+                        NavigationLink(value: sighting.id) {
+                            RankedCard(sighting: sighting, rank: index + 1)
                         }
+                        .buttonStyle(.plain)
+                            .accessibilityIdentifier("ranked-" + sighting.id)
                     }
-                    .padding()
                 }
+                .padding()
             }
-            .refreshable { await store.refresh() }
-            .navigationTitle("Rankings")
+            .background(Color(.systemGroupedBackground))
+            .navigationTitle("Best photos")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Menu {
-                        Picker("Sort By", selection: $sortOption) {
-                            ForEach(SortOption.allCases) { option in
-                                Text(option.rawValue).tag(option)
+                        Picker("Show", selection: $group) {
+                            Text("Everything").tag(AnimalGroup?.none)
+                            ForEach(AnimalGroup.allCases) { g in
+                                Text(g.label).tag(AnimalGroup?.some(g))
                             }
                         }
                     } label: {
-                        Label("Sort", systemImage: "line.3.horizontal.decrease")
+                        Label("Filter", systemImage: "line.3.horizontal.decrease")
                     }
                 }
             }
-            .navigationDestination(for: String.self) { id in
-                AnimalDetailView(animalID: id)
+            .navigationDestination(for: Sighting.ID.self) { id in
+                SightingDetailView(id: id)
             }
         }
     }
@@ -55,46 +59,43 @@ struct RankedView: View {
 
 // MARK: - Ranked Card
 
-/// A single ranked animal card.
-/// Figma: photo on top, dashed separator, name and rank label below.
+/// A single ranked card.
+/// Figma: photo on top, separator, rank, name and rating below.
 struct RankedCard: View {
-    let animal: Animal
+    @Environment(SightingStore.self) private var store
+    let sighting: Sighting
     let rank: Int
 
     var body: some View {
         VStack(spacing: 0) {
-            // Photo area
-            RemotePhoto(url: animal.imageURL)
-                .frame(height: 240)
+            Color.canopy
+                .frame(height: rank == 1 ? 260 : 200)
+                .overlay { PhotoImage(source: store.photoSource(sighting)) }
+                .clipped()
 
-            Divider()
-
-            // Name and rank
-            HStack {
+            HStack(spacing: 14) {
                 Text("#\(rank)")
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .foregroundStyle(.orange)
-                VStack(alignment: .leading) {
-                    Text(animal.name)
-                        .font(.headline)
-                    Text(animal.species)
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
+                    .font(rank <= 3 ? .wTitle : .wHeading)
+                    .monospacedDigit()
+                    .foregroundStyle(rank <= 3 ? Color.redwood : .secondary)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(sighting.title).font(.headline).lineLimit(1)
+                    if sighting.title != sighting.speciesLabel {
+                        Text(sighting.speciesLabel).font(.caption).foregroundStyle(.secondary).lineLimit(1)
+                    }
+                    Text("\(sighting.author), \(sighting.place)").font(.subheadline).foregroundStyle(.secondary).lineLimit(1)
                 }
-                Spacer()
-                Label(animal.ratingText, systemImage: "star.fill")
-                    .font(.subheadline)
-                    .foregroundStyle(.orange)
+                Spacer(minLength: 8)
+                RatingView(rating: sighting.rating)
             }
             .padding()
         }
-        .background(Color(.tertiarySystemBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .background(Color(.secondarySystemGroupedBackground))
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .accessibilityElement(children: .combine)
     }
 }
 
 #Preview {
-    RankedView()
-        .environment(SightingStore())
+    RankedView().environment(SightingStore())
 }

@@ -1,88 +1,43 @@
 #!/usr/bin/env bash
-# Regenerate the screenshots and screen recording used in docs/DEMO.md.
-#
-# Needs: the API running on localhost:8080 (scripts/run_api.sh) with demo data
-# (scripts/seed_demo_sightings.py), Xcode, and ffmpeg for the video and GIF.
-# Uses a dedicated simulator ("DEVFEST Demo") that is erased on every run, and
-# replaces the "Goldie" sighting posted by the previous run.
+# Capture the genuine coy UI flows without erasing any simulator or sighting.
 set -euo pipefail
-cd "$(dirname "$0")/.."
-ROOT="$PWD"
-DEVICE="${DEMO_DEVICE:-DEVFEST Demo}"
-OUT="$ROOT/docs/demo"
-SHOTS="$OUT/screenshots"
-RAW="$(mktemp -d)"
-DERIVED="${DERIVED_DATA:-/tmp/devfest_demo_dd}"
-mkdir -p "$SHOTS"
-
-curl -sf localhost:8080/v3/health > /dev/null || { echo "Start the API first: scripts/run_api.sh"; exit 1; }
-
-# Remove the sighting the previous run posted.
-PYTHONPATH=src:. .venv/bin/python - <<'PY'
-import os
-from pathlib import Path
-from api.store import SightingStore
-store = SightingStore(Path(os.environ.get("WILDLIFE_APP_DATA_DIR", "data/app")))
-for row in store.list():
-    if row["name"] == "Goldie" and not row["is_demo"]:
-        store.delete(row["id"])
-PY
-
-# Fresh simulator: no leftover photos, permissions, or app data.
-if ! xcrun simctl list devices | grep -q "$DEVICE ("; then
-  RUNTIME="$(xcrun simctl list runtimes | grep -o 'com.apple.CoreSimulator.SimRuntime.iOS-18[-0-9]*' | tail -1)"
-  xcrun simctl create "$DEVICE" "iPhone 16" "$RUNTIME" > /dev/null
-fi
-xcrun simctl shutdown "$DEVICE" 2>/dev/null || true
-xcrun simctl erase "$DEVICE"
-xcrun simctl boot "$DEVICE"
-xcrun simctl bootstatus "$DEVICE" -b > /dev/null
-open -a Simulator
-xcrun simctl status_bar "$DEVICE" override --time "9:41" --dataNetwork wifi --wifiMode active \
-  --wifiBars 3 --cellularMode notSupported --batteryState charged --batteryLevel 100
-xcrun simctl location "$DEVICE" set 36.99795,-122.06030      # UCSC upper campus
-xcrun simctl addmedia "$DEVICE" "$OUT/sample_input.jpg"
-
-xcodebuild -project ios/ucscdevfestapp/ucscdevfestapp.xcodeproj -scheme ucscdevfestapp \
-  -destination "platform=iOS Simulator,name=$DEVICE" -derivedDataPath "$DERIVED" \
-  CODE_SIGNING_ALLOWED=NO build-for-testing > /tmp/devfest_demo_build.log 2>&1 \
-  || { tail -30 /tmp/devfest_demo_build.log; exit 1; }
-
-run_test() {
-  TEST_RUNNER_SHOTS_DIR="$RAW" xcodebuild -project ios/ucscdevfestapp/ucscdevfestapp.xcodeproj \
-    -scheme ucscdevfestapp -destination "platform=iOS Simulator,name=$DEVICE" -derivedDataPath "$DERIVED" \
-    CODE_SIGNING_ALLOWED=NO -parallel-testing-enabled NO \
-    -only-testing:"ucscdevfestappUITests/DemoWalkthroughUITests/$1" test-without-building \
-    > "/tmp/devfest_demo_$1.log" 2>&1 \
-    || { tail -30 "/tmp/devfest_demo_$1.log"; exit 1; }
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$REPO_ROOT"
+COY_CAPTURE_DIR="${COY_CAPTURE_DIR:-$REPO_ROOT/data/app/coy-captures/$(date +%Y%m%d-%H%M%S)}"
+COY_DERIVED_DATA="${COY_DERIVED_DATA:-$COY_CAPTURE_DIR/build}"
+mkdir -p "$COY_CAPTURE_DIR"
+curl --fail --silent http://127.0.0.1:8081/healthz >/dev/null || {
+  echo 'Start the trained model and bridge first: bash scripts/run_coy.sh' >&2; exit 1;
 }
-
-run_test test1BrowseTheApp
-
-# Record the identify-and-post flow as a video.
-xcrun simctl io "$DEVICE" recordVideo --codec h264 --force /tmp/devfest_demo.mov &
-RECORDER=$!
-trap 'kill -INT "$RECORDER" 2>/dev/null || true' EXIT
-sleep 2
-run_test test2IdentifyAndPost
-kill -INT "$RECORDER"
-wait "$RECORDER" || true
-trap - EXIT
-xcrun simctl status_bar "$DEVICE" clear
-
-# Full-size PNGs are ~3 MB each. Store 590 x 1280 JPEGs in the repo.
-rm -f "$SHOTS"/*.jpg
-for png in "$RAW"/*.png; do
-  sips -s format jpeg -s formatOptions 80 -Z 1280 "$png" --out "$SHOTS/$(basename "${png%.png}").jpg" > /dev/null
-done
-rm -rf "$RAW"
-
-if command -v ffmpeg > /dev/null; then
-  ffmpeg -y -loglevel error -i /tmp/devfest_demo.mov -vf "fps=30,scale=590:-2" \
-    -c:v libx264 -preset veryfast -crf 30 -pix_fmt yuv420p -movflags +faststart -an "$OUT/identify_and_post.mp4"
-  ffmpeg -y -loglevel error -i /tmp/devfest_demo.mov \
-    -vf "setpts=PTS/2,fps=8,scale=240:-2:flags=lanczos,split[a][b];[a]palettegen=max_colors=96:stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=5:diff_mode=rectangle" \
-    "$OUT/identify_and_post.gif"
+# A new simulator gives Photos one known CC0 input and keeps all existing data intact.
+if [[ -z "${DEMO_DEVICE:-}" ]]; then
+  COY_RUNTIME="$(xcrun simctl list runtimes -j | python3 -c 'import json,sys; r=[x for x in json.load(sys.stdin)["runtimes"] if x.get("isAvailable") and x["identifier"].startswith("com.apple.CoreSimulator.SimRuntime.iOS-") and int(x["version"].split(".")[0])>=18]; print(sorted(r,key=lambda x:tuple(map(int,x["version"].split("."))))[-1]["identifier"])')"
+  DEMO_DEVICE="$(xcrun simctl create "coy capture $(date +%Y%m%d-%H%M%S)" 'iPhone 16' "$COY_RUNTIME")"
 fi
-echo "Screenshots: $SHOTS"
-ls -la "$SHOTS" "$OUT" | awk '{print $5, $9}'
+echo "Simulator: $DEMO_DEVICE (kept after capture; never erased)"
+xcrun simctl boot "$DEMO_DEVICE" 2>/dev/null || true
+xcrun simctl bootstatus "$DEMO_DEVICE" -b >/dev/null
+xcrun simctl status_bar "$DEMO_DEVICE" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --cellularMode notSupported --batteryState charged --batteryLevel 100
+xcrun simctl addmedia "$DEMO_DEVICE" "$REPO_ROOT/docs/demo/sample_input.jpg"
+PROJECT="$REPO_ROOT/ios/ucscdevfestapp/ucscdevfestapp.xcodeproj"
+xcodebuild -project "$PROJECT" -scheme ucscdevfestapp -destination "platform=iOS Simulator,id=$DEMO_DEVICE" -derivedDataPath "$COY_DERIVED_DATA" CODE_SIGNING_ALLOWED=NO build-for-testing >"$COY_CAPTURE_DIR/build.log" 2>&1
+recorder=''
+cleanup() {
+  if [[ -n "$recorder" ]]; then kill -INT "$recorder" 2>/dev/null || true; wait "$recorder" || true; fi
+  xcrun simctl status_bar "$DEMO_DEVICE" clear
+}
+trap cleanup EXIT
+capture() {
+  local label="$1" test_name="$2" result=0
+  xcrun simctl io "$DEMO_DEVICE" recordVideo --codec h264 "$COY_CAPTURE_DIR/$label.mov" >"$COY_CAPTURE_DIR/$label-recorder.log" 2>&1 &
+  recorder=$!
+  xcodebuild -project "$PROJECT" -scheme ucscdevfestapp -destination "platform=iOS Simulator,id=$DEMO_DEVICE" -derivedDataPath "$COY_DERIVED_DATA" CODE_SIGNING_ALLOWED=NO -parallel-testing-enabled NO -only-testing:"ucscdevfestappUITests/$test_name" test-without-building >"$COY_CAPTURE_DIR/$label.log" 2>&1 || result=$?
+  kill -INT "$recorder" 2>/dev/null || true
+  wait "$recorder" || true
+  recorder=''
+  if [[ "$result" != 0 ]]; then echo "UI flow failed; inspect $COY_CAPTURE_DIR/$label.log. Recording is not validated." >&2; return "$result"; fi
+}
+capture named_flow CoyDemoTests/testNamedMapFlow
+capture ranked_map CoyRankedDemoTests/testRankedAndMap
+echo "Passed both flows. Raw recordings and logs: $COY_CAPTURE_DIR"
+echo 'The named flow adds a local Goldie post and comment. It does not delete previous data.'

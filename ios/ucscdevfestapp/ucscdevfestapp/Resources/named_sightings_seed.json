@@ -1,0 +1,1409 @@
+[
+  {
+    "id": "legacy-demo-f3c0cca485504808ac0816b9b224122b",
+    "image": null,
+    "bundledImageFile": "legacy_f3c0cca485504808ac0816b9b224122b.jpg",
+    "attribution": "by drizard (CC0); resized iNaturalist photo",
+    "source": "https://www.inaturalist.org/observations/73674920",
+    "observed_on": "2026-11-12",
+    "lat": 37.0,
+    "lng": -122.06,
+    "place": "UCSC area (demo)",
+    "observer": "drizard",
+    "width": 768,
+    "height": 1024,
+    "prediction": {
+      "status": "identified",
+      "detections": [
+        {
+          "box": [
+            0,
+            0,
+            768,
+            1024
+          ],
+          "box_source": "full_image",
+          "detector_confidence": 0,
+          "status": "identified",
+          "species": {
+            "class_id": "T06",
+            "common_name": "California bay",
+            "scientific_name": "Umbellularia californica",
+            "group": "tree"
+          },
+          "confidence_calibrated": 0.992649,
+          "top_3": [
+            {
+              "class_id": "T06",
+              "probability": 0.992649
+            },
+            {
+              "class_id": "T07",
+              "probability": 0.000953
+            },
+            {
+              "class_id": "T05",
+              "probability": 0.00064
+            }
+          ],
+          "quality": {
+            "overall": 85,
+            "sharpness": 96,
+            "visibility": 60,
+            "exposure": 85,
+            "resolution": 100,
+            "composition": 92
+          },
+          "rating": 90
+        }
+      ],
+      "primary_index": 0,
+      "model_version": "ucsc34-bioclip2-v4",
+      "detector_version": "none-whole-image",
+      "recorded_on": "2026-11-12"
+    },
+    "name": "Bay",
+    "notes": "Demo sighting. Photo by drizard (CC0) via iNaturalist. https://www.inaturalist.org/observations/73674920 Imported from the earlier app; location shown approximately.",
+    "locationIsPrecise": false
+  },
+  {
+    "id": "legacy-demo-1a618c5fd42d45dc858736922c9f6430",
+    "image": null,
+    "bundledImageFile": "legacy_1a618c5fd42d45dc858736922c9f6430.jpg",
+    "attribution": "by Aden Sommerville (CC BY); resized iNaturalist photo",
+    "source": "https://www.inaturalist.org/observations/283034492",
+    "observed_on": "2026-11-04",
+    "lat": 36.97,
+    "lng": -122.05,
+    "place": "UCSC area (demo)",
+    "observer": "Aden Sommerville",
+    "width": 768,
+    "height": 1024,
+    "prediction": {
+      "status": "identified",
+      "detections": [
+        {
+          "box": [
+            0,
+            0,
+            768,
+            1024
+          ],
+          "box_source": "full_image",
+          "detector_confidence": 0,
+          "status": "identified",
+          "species": {
+            "class_id": "T01",
+            "common_name": "Coast redwood",
+            "scientific_name": "Sequoia sempervirens",
+            "group": "tree"
+          },
+          "confidence_calibrated": 0.989449,
+          "top_3": [
+            {
+              "class_id": "T01",
+              "probability": 0.989449
+            },
+            {
+              "class_id": "B09",
+              "probability": 0.000967
+            },
+            {
+              "class_id": "M02",
+              "probability": 0.000577
+            }
+          ],
+          "quality": {
+            "overall": 86,
+            "sharpness": 100,
+            "visibility": 59,
+            "exposure": 86,
+            "resolution": 100,
+            "composition": 91
+          },
+          "rating": 91
+        }
+      ],
+      "primary_index": 0,
+      "model_version": "ucsc34-bioclip2-v4",
+      "detector_version": "none-whole-image",
+      "recorded_on": "2026-11-04"
+    },
+    "name": "Big Red",
+    "notes": "Demo sighting. Photo by Aden Sommerville (CC BY) via iNaturalist. https://www.inaturalist.org/observations/283034492 Imported from the earlier app; location shown approximately.",
+    "locationIsPrecise": false
+  },
+  {
+    "id": "legacy-demo-db4f5e90d5ed4cf38ed3731d5b87d3c6",
+    "image": null,
+    "bundledImageFile": "legacy_db4f5e90d5ed4cf38ed3731d5b87d3c6.jpg",
+    "attribution": "by Allison Gong (CC BY); resized iNaturalist photo",
+    "source": "https://www.inaturalist.org/observations/76344569",
+    "observed_on": "2026-11-06",
+    "lat": 36.95,
+    "lng": -122.06,
+    "place": "UCSC area (demo)",
+    "observer": "Allison Gong",
+    "width": 1024,
+    "height": 787,
+    "prediction": {
+      "status": "identified",
+      "detections": [
+        {
+          "box": [
+            0,
+            0,
+            1024,
+            787
+          ],
+          "box_source": "full_image",
+          "detector_confidence": 0,
+          "status": "identified",
+          "species": {
+            "class_id": "G03",
+            "common_name": "Yellow-faced bumble bee",
+            "scientific_name": "Bombus vosnesenskii",
+            "group": "insect"
+          },
+          "confidence_calibrated": 0.991273,
+          "top_3": [
+            {
+              "class_id": "G03",
+              "probability": 0.991273
+            },
+            {
+              "class_id": "T07",
+              "probability": 0.000369
+            },
+            {
+              "class_id": "B05",
+              "probability": 0.000361
+            }
+          ],
+          "quality": {
+            "overall": 88,
+            "sharpness": 100,
+            "visibility": 64,
+            "exposure": 91,
+            "resolution": 100,
+            "composition": 87
+          },
+          "rating": 92
+        }
+      ],
+      "primary_index": 0,
+      "model_version": "ucsc34-bioclip2-v4",
+      "detector_version": "none-whole-image",
+      "recorded_on": "2026-11-06"
+    },
+    "name": "Bumble",
+    "notes": "Demo sighting. Photo by Allison Gong (CC BY) via iNaturalist. https://www.inaturalist.org/observations/76344569 Imported from the earlier app; location shown approximately.",
+    "locationIsPrecise": false
+  },
+  {
+    "id": "legacy-demo-645bd37ba1ce4b7db66e80005eed61f2",
+    "image": null,
+    "bundledImageFile": "legacy_645bd37ba1ce4b7db66e80005eed61f2.jpg",
+    "attribution": "by Dan Killam (CC BY); resized iNaturalist photo",
+    "source": "https://www.inaturalist.org/observations/9531598",
+    "observed_on": "2026-10-29",
+    "lat": 36.98,
+    "lng": -122.06,
+    "place": "UCSC area (demo)",
+    "observer": "Dan Killam",
+    "width": 1024,
+    "height": 766,
+    "prediction": {
+      "status": "identified",
+      "detections": [
+        {
+          "box": [
+            0,
+            0,
+            1024,
+            766
+          ],
+          "box_source": "full_image",
+          "detector_confidence": 0,
+          "status": "identified",
+          "species": {
+            "class_id": "M10",
+            "common_name": "Brush rabbit",
+            "scientific_name": "Sylvilagus bachmani",
+            "group": "small_mammal"
+          },
+          "confidence_calibrated": 0.995181,
+          "top_3": [
+            {
+              "class_id": "M10",
+              "probability": 0.995181
+            },
+            {
+              "class_id": "M09",
+              "probability": 0.000304
+            },
+            {
+              "class_id": "M08",
+              "probability": 0.000253
+            }
+          ],
+          "quality": {
+            "overall": 82,
+            "sharpness": 81,
+            "visibility": 59,
+            "exposure": 93,
+            "resolution": 100,
+            "composition": 95
+          },
+          "rating": 88
+        }
+      ],
+      "primary_index": 0,
+      "model_version": "ucsc34-bioclip2-v4",
+      "detector_version": "none-whole-image",
+      "recorded_on": "2026-10-29"
+    },
+    "name": "Clover",
+    "notes": "Demo sighting. Photo by Dan Killam (CC BY) via iNaturalist. https://www.inaturalist.org/observations/9531598 Imported from the earlier app; location shown approximately.",
+    "locationIsPrecise": false
+  },
+  {
+    "id": "legacy-demo-78f69b003fd5466fb8eeafccf9f53522",
+    "image": null,
+    "bundledImageFile": "legacy_78f69b003fd5466fb8eeafccf9f53522.jpg",
+    "attribution": "by Dan Killam (CC BY); resized iNaturalist photo",
+    "source": "https://www.inaturalist.org/observations/7462576",
+    "observed_on": "2026-11-04",
+    "lat": 37.0,
+    "lng": -122.06,
+    "place": "UCSC area (demo)",
+    "observer": "Dan Killam",
+    "width": 1024,
+    "height": 767,
+    "prediction": {
+      "status": "identified",
+      "detections": [
+        {
+          "box": [
+            0,
+            0,
+            1024,
+            767
+          ],
+          "box_source": "full_image",
+          "detector_confidence": 0,
+          "status": "identified",
+          "species": {
+            "class_id": "M01",
+            "common_name": "Black-tailed deer",
+            "scientific_name": "Odocoileus hemionus",
+            "group": "large_mammal"
+          },
+          "confidence_calibrated": 0.989326,
+          "top_3": [
+            {
+              "class_id": "M01",
+              "probability": 0.989326
+            },
+            {
+              "class_id": "T05",
+              "probability": 0.000792
+            },
+            {
+              "class_id": "M09",
+              "probability": 0.000734
+            }
+          ],
+          "quality": {
+            "overall": 87,
+            "sharpness": 100,
+            "visibility": 61,
+            "exposure": 87,
+            "resolution": 100,
+            "composition": 94
+          },
+          "rating": 91
+        }
+      ],
+      "primary_index": 0,
+      "model_version": "ucsc34-bioclip2-v4",
+      "detector_version": "none-whole-image",
+      "recorded_on": "2026-11-04"
+    },
+    "name": "Deerly",
+    "notes": "Demo sighting. Photo by Dan Killam (CC BY) via iNaturalist. https://www.inaturalist.org/observations/7462576 Imported from the earlier app; location shown approximately.",
+    "locationIsPrecise": false
+  },
+  {
+    "id": "legacy-demo-97199cb4fad74235bc811f3daf1f2294",
+    "image": null,
+    "bundledImageFile": "legacy_97199cb4fad74235bc811f3daf1f2294.jpg",
+    "attribution": "by Dan Killam (CC BY); resized iNaturalist photo",
+    "source": "https://www.inaturalist.org/observations/9531558",
+    "observed_on": "2026-10-29",
+    "lat": 36.98,
+    "lng": -122.06,
+    "place": "UCSC area (demo)",
+    "observer": "Dan Killam",
+    "width": 1024,
+    "height": 818,
+    "prediction": {
+      "status": "identified",
+      "detections": [
+        {
+          "box": [
+            0,
+            0,
+            1024,
+            818
+          ],
+          "box_source": "full_image",
+          "detector_confidence": 0,
+          "status": "identified",
+          "species": {
+            "class_id": "M07",
+            "common_name": "California ground squirrel",
+            "scientific_name": "Otospermophilus beecheyi",
+            "group": "small_mammal"
+          },
+          "confidence_calibrated": 0.9925,
+          "top_3": [
+            {
+              "class_id": "M07",
+              "probability": 0.9925
+            },
+            {
+              "class_id": "M03",
+              "probability": 0.000394
+            },
+            {
+              "class_id": "B02",
+              "probability": 0.000381
+            }
+          ],
+          "quality": {
+            "overall": 82,
+            "sharpness": 76,
+            "visibility": 67,
+            "exposure": 85,
+            "resolution": 100,
+            "composition": 99
+          },
+          "rating": 88
+        }
+      ],
+      "primary_index": 0,
+      "model_version": "ucsc34-bioclip2-v4",
+      "detector_version": "none-whole-image",
+      "recorded_on": "2026-10-29"
+    },
+    "name": "Digger",
+    "notes": "Demo sighting. Photo by Dan Killam (CC BY) via iNaturalist. https://www.inaturalist.org/observations/9531558 Imported from the earlier app; location shown approximately.",
+    "locationIsPrecise": false
+  },
+  {
+    "id": "legacy-demo-6597e6d2bee14612bf8c7d454c1294a7",
+    "image": null,
+    "bundledImageFile": "legacy_6597e6d2bee14612bf8c7d454c1294a7.jpg",
+    "attribution": "by Barbara Banfield (CC BY); resized iNaturalist photo",
+    "source": "https://www.inaturalist.org/observations/30692441",
+    "observed_on": "2026-10-31",
+    "lat": 36.99,
+    "lng": -122.06,
+    "place": "UCSC area (demo)",
+    "observer": "Barbara Banfield",
+    "width": 1024,
+    "height": 947,
+    "prediction": {
+      "status": "identified",
+      "detections": [
+        {
+          "box": [
+            0,
+            0,
+            1024,
+            947
+          ],
+          "box_source": "full_image",
+          "detector_confidence": 0,
+          "status": "identified",
+          "species": {
+            "class_id": "G05",
+            "common_name": "Convergent lady beetle",
+            "scientific_name": "Hippodamia convergens",
+            "group": "insect"
+          },
+          "confidence_calibrated": 0.991264,
+          "top_3": [
+            {
+              "class_id": "G05",
+              "probability": 0.991264
+            },
+            {
+              "class_id": "M01",
+              "probability": 0.000497
+            },
+            {
+              "class_id": "G01",
+              "probability": 0.000447
+            }
+          ],
+          "quality": {
+            "overall": 60,
+            "sharpness": 47,
+            "visibility": 22,
+            "exposure": 76,
+            "resolution": 100,
+            "composition": 95
+          },
+          "rating": 74
+        }
+      ],
+      "primary_index": 0,
+      "model_version": "ucsc34-bioclip2-v4",
+      "detector_version": "none-whole-image",
+      "recorded_on": "2026-10-31"
+    },
+    "name": "Dot",
+    "notes": "Demo sighting. Photo by Barbara Banfield (CC BY) via iNaturalist. https://www.inaturalist.org/observations/30692441 Imported from the earlier app; location shown approximately.",
+    "locationIsPrecise": false
+  },
+  {
+    "id": "legacy-demo-b038eac62297489a96bde5a88b80c689",
+    "image": null,
+    "bundledImageFile": "legacy_b038eac62297489a96bde5a88b80c689.jpg",
+    "attribution": "by Sarah Angulo (CC0); resized iNaturalist photo",
+    "source": "http://www.inaturalist.org/observations/3066321",
+    "observed_on": "2026-11-06",
+    "lat": 37.02,
+    "lng": -122.08,
+    "place": "UCSC area (demo)",
+    "observer": "Sarah Angulo",
+    "width": 768,
+    "height": 1024,
+    "prediction": {
+      "status": "identified",
+      "detections": [
+        {
+          "box": [
+            0,
+            0,
+            768,
+            1024
+          ],
+          "box_source": "full_image",
+          "detector_confidence": 0,
+          "status": "identified",
+          "species": {
+            "class_id": "T02",
+            "common_name": "Douglas-fir",
+            "scientific_name": "Pseudotsuga menziesii",
+            "group": "tree"
+          },
+          "confidence_calibrated": 0.992282,
+          "top_3": [
+            {
+              "class_id": "T02",
+              "probability": 0.992282
+            },
+            {
+              "class_id": "B05",
+              "probability": 0.000443
+            },
+            {
+              "class_id": "M03",
+              "probability": 0.000419
+            }
+          ],
+          "quality": {
+            "overall": 89,
+            "sharpness": 100,
+            "visibility": 63,
+            "exposure": 92,
+            "resolution": 100,
+            "composition": 98
+          },
+          "rating": 93
+        }
+      ],
+      "primary_index": 0,
+      "model_version": "ucsc34-bioclip2-v4",
+      "detector_version": "none-whole-image",
+      "recorded_on": "2026-11-06"
+    },
+    "name": "Doug",
+    "notes": "Demo sighting. Photo by Sarah Angulo (CC0) via iNaturalist. http://www.inaturalist.org/observations/3066321 Imported from the earlier app; location shown approximately.",
+    "locationIsPrecise": false
+  },
+  {
+    "id": "legacy-demo-20318be888704ee084502f3eddbd93fe",
+    "image": null,
+    "bundledImageFile": "legacy_20318be888704ee084502f3eddbd93fe.jpg",
+    "attribution": "by lazarus (CC BY); resized iNaturalist photo",
+    "source": "https://www.inaturalist.org/observations/133848468",
+    "observed_on": "2026-11-01",
+    "lat": 37.0,
+    "lng": -122.04,
+    "place": "UCSC area (demo)",
+    "observer": "lazarus",
+    "width": 768,
+    "height": 1024,
+    "prediction": {
+      "status": "identified",
+      "detections": [
+        {
+          "box": [
+            0,
+            0,
+            768,
+            1024
+          ],
+          "box_source": "full_image",
+          "detector_confidence": 0,
+          "status": "identified",
+          "species": {
+            "class_id": "G06",
+            "common_name": "Western yellowjacket",
+            "scientific_name": "Vespula pensylvanica",
+            "group": "insect"
+          },
+          "confidence_calibrated": 0.993909,
+          "top_3": [
+            {
+              "class_id": "G06",
+              "probability": 0.993909
+            },
+            {
+              "class_id": "M01",
+              "probability": 0.000421
+            },
+            {
+              "class_id": "M09",
+              "probability": 0.000364
+            }
+          ],
+          "quality": {
+            "overall": 86,
+            "sharpness": 93,
+            "visibility": 62,
+            "exposure": 89,
+            "resolution": 100,
+            "composition": 98
+          },
+          "rating": 91
+        }
+      ],
+      "primary_index": 0,
+      "model_version": "ucsc34-bioclip2-v4",
+      "detector_version": "none-whole-image",
+      "recorded_on": "2026-11-01"
+    },
+    "name": "Jacket",
+    "notes": "Demo sighting. Photo by lazarus (CC BY) via iNaturalist. https://www.inaturalist.org/observations/133848468 Imported from the earlier app; location shown approximately.",
+    "locationIsPrecise": false
+  },
+  {
+    "id": "legacy-demo-ec9cbe44d73a41c8a6c31b38dc865875",
+    "image": null,
+    "bundledImageFile": "legacy_ec9cbe44d73a41c8a6c31b38dc865875.jpg",
+    "attribution": "by Jens-Christian Svenning (CC BY); resized iNaturalist photo",
+    "source": "https://www.inaturalist.org/observations/48046701",
+    "observed_on": "2026-11-14",
+    "lat": 36.99,
+    "lng": -122.04,
+    "place": "UCSC area (demo)",
+    "observer": "Jens-Christian Svenning",
+    "width": 1024,
+    "height": 768,
+    "prediction": {
+      "status": "identified",
+      "detections": [
+        {
+          "box": [
+            0,
+            0,
+            1024,
+            768
+          ],
+          "box_source": "full_image",
+          "detector_confidence": 0,
+          "status": "identified",
+          "species": {
+            "class_id": "T03",
+            "common_name": "Pacific madrone",
+            "scientific_name": "Arbutus menziesii",
+            "group": "tree"
+          },
+          "confidence_calibrated": 0.992878,
+          "top_3": [
+            {
+              "class_id": "T03",
+              "probability": 0.992878
+            },
+            {
+              "class_id": "M01",
+              "probability": 0.000423
+            },
+            {
+              "class_id": "I01",
+              "probability": 0.000379
+            }
+          ],
+          "quality": {
+            "overall": 88,
+            "sharpness": 100,
+            "visibility": 60,
+            "exposure": 94,
+            "resolution": 100,
+            "composition": 92
+          },
+          "rating": 92
+        }
+      ],
+      "primary_index": 0,
+      "model_version": "ucsc34-bioclip2-v4",
+      "detector_version": "none-whole-image",
+      "recorded_on": "2026-11-14"
+    },
+    "name": "Madrone",
+    "notes": "Demo sighting. Photo by Jens-Christian Svenning (CC BY) via iNaturalist. https://www.inaturalist.org/observations/48046701 Imported from the earlier app; location shown approximately.",
+    "locationIsPrecise": false
+  },
+  {
+    "id": "legacy-demo-d1254777dcd94fd19b37c88bfa306338",
+    "image": null,
+    "bundledImageFile": "legacy_d1254777dcd94fd19b37c88bfa306338.jpg",
+    "attribution": "by naturalist charlie (CC BY); resized iNaturalist photo",
+    "source": "http://www.inaturalist.org/observations/1743300",
+    "observed_on": "2026-10-31",
+    "lat": 37.08,
+    "lng": -122.09,
+    "place": "UCSC area (demo)",
+    "observer": "naturalist charlie",
+    "width": 768,
+    "height": 1024,
+    "prediction": {
+      "status": "identified",
+      "detections": [
+        {
+          "box": [
+            0,
+            0,
+            768,
+            1024
+          ],
+          "box_source": "full_image",
+          "detector_confidence": 0,
+          "status": "identified",
+          "species": {
+            "class_id": "T07",
+            "common_name": "Bigleaf maple",
+            "scientific_name": "Acer macrophyllum",
+            "group": "tree"
+          },
+          "confidence_calibrated": 0.982993,
+          "top_3": [
+            {
+              "class_id": "T07",
+              "probability": 0.982993
+            },
+            {
+              "class_id": "T01",
+              "probability": 0.008228
+            },
+            {
+              "class_id": "T02",
+              "probability": 0.000739
+            }
+          ],
+          "quality": {
+            "overall": 86,
+            "sharpness": 100,
+            "visibility": 64,
+            "exposure": 78,
+            "resolution": 100,
+            "composition": 92
+          },
+          "rating": 90
+        }
+      ],
+      "primary_index": 0,
+      "model_version": "ucsc34-bioclip2-v4",
+      "detector_version": "none-whole-image",
+      "recorded_on": "2026-10-31"
+    },
+    "name": "Maple",
+    "notes": "Demo sighting. Photo by naturalist charlie (CC BY) via iNaturalist. http://www.inaturalist.org/observations/1743300 Imported from the earlier app; location shown approximately.",
+    "locationIsPrecise": false
+  },
+  {
+    "id": "legacy-demo-bda6be88d4ba4932a3e7136d85f8a8c1",
+    "image": null,
+    "bundledImageFile": "legacy_bda6be88d4ba4932a3e7136d85f8a8c1.jpg",
+    "attribution": "by reagan peschke (CC BY); resized iNaturalist photo",
+    "source": "https://www.inaturalist.org/observations/272794327",
+    "observed_on": "2026-11-07",
+    "lat": 37.0,
+    "lng": -122.06,
+    "place": "UCSC area (demo)",
+    "observer": "reagan peschke",
+    "width": 768,
+    "height": 1024,
+    "prediction": {
+      "status": "identified",
+      "detections": [
+        {
+          "box": [
+            0,
+            0,
+            768,
+            1024
+          ],
+          "box_source": "full_image",
+          "detector_confidence": 0,
+          "status": "identified",
+          "species": {
+            "class_id": "G04",
+            "common_name": "Yellow-spotted millipede",
+            "scientific_name": "Harpaphe haydeniana",
+            "group": "arthropod"
+          },
+          "confidence_calibrated": 0.993163,
+          "top_3": [
+            {
+              "class_id": "G04",
+              "probability": 0.993163
+            },
+            {
+              "class_id": "B01",
+              "probability": 0.000309
+            },
+            {
+              "class_id": "I01",
+              "probability": 0.000302
+            }
+          ],
+          "quality": {
+            "overall": 88,
+            "sharpness": 100,
+            "visibility": 63,
+            "exposure": 85,
+            "resolution": 100,
+            "composition": 98
+          },
+          "rating": 92
+        }
+      ],
+      "primary_index": 0,
+      "model_version": "ucsc34-bioclip2-v4",
+      "detector_version": "none-whole-image",
+      "recorded_on": "2026-11-07"
+    },
+    "name": "Millie",
+    "notes": "Demo sighting. Photo by reagan peschke (CC BY) via iNaturalist. https://www.inaturalist.org/observations/272794327 Imported from the earlier app; location shown approximately.",
+    "locationIsPrecise": false
+  },
+  {
+    "id": "legacy-demo-b785e8d38221429f9ba793da41f657fa",
+    "image": null,
+    "bundledImageFile": "legacy_b785e8d38221429f9ba793da41f657fa.jpg",
+    "attribution": "by Dan Killam (CC BY); resized iNaturalist photo",
+    "source": "https://www.inaturalist.org/observations/7808821",
+    "observed_on": "2026-11-05",
+    "lat": 37.0,
+    "lng": -122.06,
+    "place": "UCSC area (demo)",
+    "observer": "Dan Killam",
+    "width": 1024,
+    "height": 899,
+    "prediction": {
+      "status": "identified",
+      "detections": [
+        {
+          "box": [
+            0,
+            0,
+            1024,
+            899
+          ],
+          "box_source": "full_image",
+          "detector_confidence": 0,
+          "status": "identified",
+          "species": {
+            "class_id": "M08",
+            "common_name": "Eastern gray squirrel",
+            "scientific_name": "Sciurus carolinensis",
+            "group": "small_mammal"
+          },
+          "confidence_calibrated": 0.994611,
+          "top_3": [
+            {
+              "class_id": "M08",
+              "probability": 0.994611
+            },
+            {
+              "class_id": "M09",
+              "probability": 0.001233
+            },
+            {
+              "class_id": "M02",
+              "probability": 0.000372
+            }
+          ],
+          "quality": {
+            "overall": 74,
+            "sharpness": 61,
+            "visibility": 63,
+            "exposure": 85,
+            "resolution": 100,
+            "composition": 83
+          },
+          "rating": 83
+        }
+      ],
+      "primary_index": 0,
+      "model_version": "ucsc34-bioclip2-v4",
+      "detector_version": "none-whole-image",
+      "recorded_on": "2026-11-05"
+    },
+    "name": "Nutmeg",
+    "notes": "Demo sighting. Photo by Dan Killam (CC BY) via iNaturalist. https://www.inaturalist.org/observations/7808821 Imported from the earlier app; location shown approximately.",
+    "locationIsPrecise": false
+  },
+  {
+    "id": "legacy-demo-692dce0eca7e4d8a8c867ce614d227f1",
+    "image": null,
+    "bundledImageFile": "legacy_692dce0eca7e4d8a8c867ce614d227f1.jpg",
+    "attribution": "by Dan Killam (CC BY); resized iNaturalist photo",
+    "source": "https://www.inaturalist.org/observations/13353028",
+    "observed_on": "2026-10-29",
+    "lat": 37.0,
+    "lng": -122.06,
+    "place": "UCSC area (demo)",
+    "observer": "Dan Killam",
+    "width": 1024,
+    "height": 683,
+    "prediction": {
+      "status": "identified",
+      "detections": [
+        {
+          "box": [
+            0,
+            0,
+            1024,
+            683
+          ],
+          "box_source": "full_image",
+          "detector_confidence": 0,
+          "status": "identified",
+          "species": {
+            "class_id": "B08",
+            "common_name": "American robin",
+            "scientific_name": "Turdus migratorius",
+            "group": "bird"
+          },
+          "confidence_calibrated": 0.990958,
+          "top_3": [
+            {
+              "class_id": "B08",
+              "probability": 0.990958
+            },
+            {
+              "class_id": "M08",
+              "probability": 0.000734
+            },
+            {
+              "class_id": "M02",
+              "probability": 0.000478
+            }
+          ],
+          "quality": {
+            "overall": 86,
+            "sharpness": 92,
+            "visibility": 66,
+            "exposure": 87,
+            "resolution": 98,
+            "composition": 97
+          },
+          "rating": 91
+        }
+      ],
+      "primary_index": 0,
+      "model_version": "ucsc34-bioclip2-v4",
+      "detector_version": "none-whole-image",
+      "recorded_on": "2026-10-29"
+    },
+    "name": "Robin",
+    "notes": "Demo sighting. Photo by Dan Killam (CC BY) via iNaturalist. https://www.inaturalist.org/observations/13353028 Imported from the earlier app; location shown approximately.",
+    "locationIsPrecise": false
+  },
+  {
+    "id": "legacy-demo-6869a6da746146599ee3dc224388782a",
+    "image": null,
+    "bundledImageFile": "legacy_6869a6da746146599ee3dc224388782a.jpg",
+    "attribution": "by Dan Killam (CC BY); resized iNaturalist photo",
+    "source": "https://www.inaturalist.org/observations/7416888",
+    "observed_on": "2026-11-09",
+    "lat": 37.0,
+    "lng": -122.06,
+    "place": "UCSC area (demo)",
+    "observer": "Dan Killam",
+    "width": 768,
+    "height": 1024,
+    "prediction": {
+      "status": "identified",
+      "detections": [
+        {
+          "box": [
+            0,
+            0,
+            768,
+            1024
+          ],
+          "box_source": "full_image",
+          "detector_confidence": 0,
+          "status": "identified",
+          "species": {
+            "class_id": "M05",
+            "common_name": "Northern raccoon",
+            "scientific_name": "Procyon lotor",
+            "group": "small_mammal"
+          },
+          "confidence_calibrated": 0.993935,
+          "top_3": [
+            {
+              "class_id": "M05",
+              "probability": 0.993935
+            },
+            {
+              "class_id": "B06",
+              "probability": 0.000352
+            },
+            {
+              "class_id": "B09",
+              "probability": 0.000338
+            }
+          ],
+          "quality": {
+            "overall": 73,
+            "sharpness": 48,
+            "visibility": 63,
+            "exposure": 91,
+            "resolution": 100,
+            "composition": 97
+          },
+          "rating": 82
+        }
+      ],
+      "primary_index": 0,
+      "model_version": "ucsc34-bioclip2-v4",
+      "detector_version": "none-whole-image",
+      "recorded_on": "2026-11-09"
+    },
+    "name": "Rocky",
+    "notes": "Demo sighting. Photo by Dan Killam (CC BY) via iNaturalist. https://www.inaturalist.org/observations/7416888 Imported from the earlier app; location shown approximately.",
+    "locationIsPrecise": false
+  },
+  {
+    "id": "legacy-demo-4abdb93f723a4190b27f32e8c1361554",
+    "image": null,
+    "bundledImageFile": "legacy_4abdb93f723a4190b27f32e8c1361554.jpg",
+    "attribution": "by Ryan Donnelly (CC BY); resized iNaturalist photo",
+    "source": "https://www.inaturalist.org/observations/285526026",
+    "observed_on": "2026-11-12",
+    "lat": 36.99,
+    "lng": -122.06,
+    "place": "UCSC area (demo)",
+    "observer": "Ryan Donnelly",
+    "width": 1024,
+    "height": 768,
+    "prediction": {
+      "status": "identified",
+      "detections": [
+        {
+          "box": [
+            0,
+            0,
+            1024,
+            768
+          ],
+          "box_source": "full_image",
+          "detector_confidence": 0,
+          "status": "identified",
+          "species": {
+            "class_id": "I01",
+            "common_name": "Banana slug (genus)",
+            "scientific_name": "Ariolimax",
+            "group": "gastropod"
+          },
+          "confidence_calibrated": 0.984039,
+          "top_3": [
+            {
+              "class_id": "I01",
+              "probability": 0.984039
+            },
+            {
+              "class_id": "M08",
+              "probability": 0.001551
+            },
+            {
+              "class_id": "T06",
+              "probability": 0.00142
+            }
+          ],
+          "quality": {
+            "overall": 84,
+            "sharpness": 100,
+            "visibility": 59,
+            "exposure": 79,
+            "resolution": 100,
+            "composition": 85
+          },
+          "rating": 89
+        }
+      ],
+      "primary_index": 0,
+      "model_version": "ucsc34-bioclip2-v4",
+      "detector_version": "none-whole-image",
+      "recorded_on": "2026-11-12"
+    },
+    "name": "Sammy",
+    "notes": "Demo sighting. Photo by Ryan Donnelly (CC BY) via iNaturalist. https://www.inaturalist.org/observations/285526026 Imported from the earlier app; location shown approximately.",
+    "locationIsPrecise": false
+  },
+  {
+    "id": "legacy-demo-823ec6491e41408585e81f5d3368a113",
+    "image": null,
+    "bundledImageFile": "legacy_823ec6491e41408585e81f5d3368a113.jpg",
+    "attribution": "by naturalist charlie (CC BY); resized iNaturalist photo",
+    "source": "http://www.inaturalist.org/observations/1740313",
+    "observed_on": "2026-10-29",
+    "lat": 36.97,
+    "lng": -121.9,
+    "place": "UCSC area (demo)",
+    "observer": "naturalist charlie",
+    "width": 768,
+    "height": 1024,
+    "prediction": {
+      "status": "identified",
+      "detections": [
+        {
+          "box": [
+            0,
+            0,
+            768,
+            1024
+          ],
+          "box_source": "full_image",
+          "detector_confidence": 0,
+          "status": "identified",
+          "species": {
+            "class_id": "M06",
+            "common_name": "Striped skunk",
+            "scientific_name": "Mephitis mephitis",
+            "group": "small_mammal"
+          },
+          "confidence_calibrated": 0.98438,
+          "top_3": [
+            {
+              "class_id": "M06",
+              "probability": 0.98438
+            },
+            {
+              "class_id": "M05",
+              "probability": 0.004284
+            },
+            {
+              "class_id": "B06",
+              "probability": 0.002209
+            }
+          ],
+          "quality": {
+            "overall": 76,
+            "sharpness": 59,
+            "visibility": 66,
+            "exposure": 84,
+            "resolution": 100,
+            "composition": 92
+          },
+          "rating": 84
+        }
+      ],
+      "primary_index": 0,
+      "model_version": "ucsc34-bioclip2-v4",
+      "detector_version": "none-whole-image",
+      "recorded_on": "2026-10-29"
+    },
+    "name": "Stripe",
+    "notes": "Demo sighting. Photo by naturalist charlie (CC BY) via iNaturalist. http://www.inaturalist.org/observations/1740313 Imported from the earlier app; location shown approximately.",
+    "locationIsPrecise": false
+  },
+  {
+    "id": "legacy-demo-25e50c3b027b4afc9aa0d1c347072cda",
+    "image": null,
+    "bundledImageFile": "legacy_25e50c3b027b4afc9aa0d1c347072cda.jpg",
+    "attribution": "by Jens-Christian Svenning (CC BY); resized iNaturalist photo",
+    "source": "https://www.inaturalist.org/observations/48050215",
+    "observed_on": "2026-11-01",
+    "lat": 37.0,
+    "lng": -122.06,
+    "place": "UCSC area (demo)",
+    "observer": "Jens-Christian Svenning",
+    "width": 1024,
+    "height": 768,
+    "prediction": {
+      "status": "identified",
+      "detections": [
+        {
+          "box": [
+            0,
+            0,
+            1024,
+            768
+          ],
+          "box_source": "full_image",
+          "detector_confidence": 0,
+          "status": "identified",
+          "species": {
+            "class_id": "T05",
+            "common_name": "Tanoak",
+            "scientific_name": "Notholithocarpus densiflorus",
+            "group": "tree"
+          },
+          "confidence_calibrated": 0.992631,
+          "top_3": [
+            {
+              "class_id": "T05",
+              "probability": 0.992631
+            },
+            {
+              "class_id": "M02",
+              "probability": 0.000499
+            },
+            {
+              "class_id": "B09",
+              "probability": 0.000468
+            }
+          ],
+          "quality": {
+            "overall": 88,
+            "sharpness": 100,
+            "visibility": 60,
+            "exposure": 90,
+            "resolution": 100,
+            "composition": 94
+          },
+          "rating": 92
+        }
+      ],
+      "primary_index": 0,
+      "model_version": "ucsc34-bioclip2-v4",
+      "detector_version": "none-whole-image",
+      "recorded_on": "2026-11-01"
+    },
+    "name": "Tan",
+    "notes": "Demo sighting. Photo by Jens-Christian Svenning (CC BY) via iNaturalist. https://www.inaturalist.org/observations/48050215 Imported from the earlier app; location shown approximately.",
+    "locationIsPrecise": false
+  },
+  {
+    "id": "legacy-demo-2fef40250b0f495fb363a3f781cea959",
+    "image": null,
+    "bundledImageFile": "legacy_2fef40250b0f495fb363a3f781cea959.jpg",
+    "attribution": "by Drew T (CC BY); resized iNaturalist photo",
+    "source": "https://www.inaturalist.org/observations/121668651",
+    "observed_on": "2026-11-13",
+    "lat": 36.98,
+    "lng": -122.03,
+    "place": "UCSC area (demo)",
+    "observer": "Drew T",
+    "width": 1024,
+    "height": 1024,
+    "prediction": {
+      "status": "identified",
+      "detections": [
+        {
+          "box": [
+            0,
+            0,
+            1024,
+            1024
+          ],
+          "box_source": "full_image",
+          "detector_confidence": 0,
+          "status": "identified",
+          "species": {
+            "class_id": "G02",
+            "common_name": "Western tiger swallowtail",
+            "scientific_name": "Papilio rutulus",
+            "group": "insect"
+          },
+          "confidence_calibrated": 0.992867,
+          "top_3": [
+            {
+              "class_id": "G02",
+              "probability": 0.992867
+            },
+            {
+              "class_id": "M07",
+              "probability": 0.000397
+            },
+            {
+              "class_id": "G01",
+              "probability": 0.00034
+            }
+          ],
+          "quality": {
+            "overall": 79,
+            "sharpness": 71,
+            "visibility": 69,
+            "exposure": 87,
+            "resolution": 100,
+            "composition": 81
+          },
+          "rating": 86
+        }
+      ],
+      "primary_index": 0,
+      "model_version": "ucsc34-bioclip2-v4",
+      "detector_version": "none-whole-image",
+      "recorded_on": "2026-11-13"
+    },
+    "name": "Tiger",
+    "notes": "Demo sighting. Photo by Drew T (CC BY) via iNaturalist. https://www.inaturalist.org/observations/121668651 Imported from the earlier app; location shown approximately.",
+    "locationIsPrecise": false
+  },
+  {
+    "id": "legacy-demo-a7c30dc3b81f4012817ed9863028af95",
+    "image": null,
+    "bundledImageFile": "legacy_a7c30dc3b81f4012817ed9863028af95.jpg",
+    "attribution": "by Dan Killam (CC BY); resized iNaturalist photo",
+    "source": "https://www.inaturalist.org/observations/12848581",
+    "observed_on": "2026-11-06",
+    "lat": 36.97,
+    "lng": -121.99,
+    "place": "UCSC area (demo)",
+    "observer": "Dan Killam",
+    "width": 1024,
+    "height": 1024,
+    "prediction": {
+      "status": "identified",
+      "detections": [
+        {
+          "box": [
+            0,
+            0,
+            1024,
+            1024
+          ],
+          "box_source": "full_image",
+          "detector_confidence": 0,
+          "status": "identified",
+          "species": {
+            "class_id": "B10",
+            "common_name": "Spotted towhee",
+            "scientific_name": "Pipilo maculatus",
+            "group": "bird"
+          },
+          "confidence_calibrated": 0.993985,
+          "top_3": [
+            {
+              "class_id": "B10",
+              "probability": 0.993985
+            },
+            {
+              "class_id": "M03",
+              "probability": 0.000317
+            },
+            {
+              "class_id": "M07",
+              "probability": 0.000258
+            }
+          ],
+          "quality": {
+            "overall": 81,
+            "sharpness": 72,
+            "visibility": 69,
+            "exposure": 92,
+            "resolution": 100,
+            "composition": 89
+          },
+          "rating": 87
+        }
+      ],
+      "primary_index": 0,
+      "model_version": "ucsc34-bioclip2-v4",
+      "detector_version": "none-whole-image",
+      "recorded_on": "2026-11-06"
+    },
+    "name": "Towhee",
+    "notes": "Demo sighting. Photo by Dan Killam (CC BY) via iNaturalist. https://www.inaturalist.org/observations/12848581 Imported from the earlier app; location shown approximately.",
+    "locationIsPrecise": false
+  },
+  {
+    "id": "legacy-demo-32b94b2968864bdaa60436763204100a",
+    "image": null,
+    "bundledImageFile": "legacy_32b94b2968864bdaa60436763204100a.jpg",
+    "attribution": "by Allison Gong (CC BY); resized iNaturalist photo",
+    "source": "https://www.inaturalist.org/observations/19922540",
+    "observed_on": "2026-11-09",
+    "lat": 36.96,
+    "lng": -122.05,
+    "place": "UCSC area (demo)",
+    "observer": "Allison Gong",
+    "width": 1024,
+    "height": 684,
+    "prediction": {
+      "status": "identified",
+      "detections": [
+        {
+          "box": [
+            0,
+            0,
+            1024,
+            684
+          ],
+          "box_source": "full_image",
+          "detector_confidence": 0,
+          "status": "identified",
+          "species": {
+            "class_id": "M02",
+            "common_name": "Coyote",
+            "scientific_name": "Canis latrans",
+            "group": "large_mammal"
+          },
+          "confidence_calibrated": 0.993322,
+          "top_3": [
+            {
+              "class_id": "M02",
+              "probability": 0.993322
+            },
+            {
+              "class_id": "M04",
+              "probability": 0.000424
+            },
+            {
+              "class_id": "B06",
+              "probability": 0.000408
+            }
+          ],
+          "quality": {
+            "overall": 86,
+            "sharpness": 97,
+            "visibility": 62,
+            "exposure": 85,
+            "resolution": 98,
+            "composition": 95
+          },
+          "rating": 91
+        }
+      ],
+      "primary_index": 0,
+      "model_version": "ucsc34-bioclip2-v4",
+      "detector_version": "none-whole-image",
+      "recorded_on": "2026-11-09"
+    },
+    "name": "Whiskers",
+    "notes": "Demo sighting. Photo by Allison Gong (CC BY) via iNaturalist. https://www.inaturalist.org/observations/19922540 Imported from the earlier app; location shown approximately.",
+    "locationIsPrecise": false
+  }
+]

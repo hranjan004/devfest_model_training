@@ -6,10 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		30A0000330B0000000918093 /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 30A0000230B0000000918093 /* GoogleMaps */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXContainerItemProxy section */
 		3082DD7330A91F6F00918093 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -56,7 +52,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30A0000330B0000000918093 /* GoogleMaps in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,7 +112,6 @@
 			);
 			name = ucscdevfestapp;
 			packageProductDependencies = (
-				30A0000230B0000000918093 /* GoogleMaps */,
 			);
 			productName = ucscdevfestapp;
 			productReference = 3082DD6530A91F6B00918093 /* ucscdevfestapp.app */;
@@ -201,9 +195,6 @@
 			);
 			mainGroup = 3082DD5C30A91F6A00918093;
 			minimizedProjectReferenceProxies = 1;
-			packageReferences = (
-				30A0000130B0000000918093 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */,
-			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3082DD6630A91F6B00918093 /* Products */;
 			projectDirPath = "";
@@ -406,10 +397,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_FILE = "Configuration/Coy-Debug.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = coy;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Take a photo of an animal so the model can identify it. Location data is removed before upload.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -434,10 +427,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_FILE = "Configuration/Coy-Release.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = coy;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Take a photo of an animal so the model can identify it. Location data is removed before upload.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -561,25 +556,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		30A0000130B0000000918093 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/googlemaps/ios-maps-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		30A0000230B0000000918093 /* GoogleMaps */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 30A0000130B0000000918093 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */;
-			productName = GoogleMaps;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3082DD5D30A91F6A00918093 /* Project object */;
 }

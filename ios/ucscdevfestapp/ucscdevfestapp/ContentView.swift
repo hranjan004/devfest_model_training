@@ -8,27 +8,33 @@
 import SwiftUI
 
 /// Root view with a TabView matching the Figma bottom tab bar:
-/// Home | Species | Ranked, plus a Map tab showing where every sighting was made.
+/// Home | Species | Identify | Ranked | Map
 struct ContentView: View {
     @State private var store = SightingStore()
+    @State private var tab: AppTab = .home
+
+    enum AppTab: Hashable { case home, species, identify, ranked, map }
 
     var body: some View {
-        TabView {
-            Tab("Home", systemImage: "house.fill") {
+        TabView(selection: $tab) {
+            Tab("Home", systemImage: "house.fill", value: AppTab.home) {
                 HomeView()
             }
-            Tab("Species", systemImage: "pawprint.fill") {
+            Tab("Species", systemImage: "pawprint.fill", value: AppTab.species) {
                 SpeciesView()
             }
-            Tab("Ranked", systemImage: "trophy.fill") {
+            Tab("Identify", systemImage: "viewfinder", value: AppTab.identify) {
+                IdentifyView(onPosted: { tab = .home })
+            }
+            Tab("Ranked", systemImage: "trophy.fill", value: AppTab.ranked) {
                 RankedView()
             }
-            Tab("Map", systemImage: "map.fill") {
+            Tab("Map", systemImage: "map.fill", value: AppTab.map) {
                 MapTabView()
             }
         }
+        .tint(.redwood)
         .environment(store)
-        .task { await store.refresh() }
     }
 }
 

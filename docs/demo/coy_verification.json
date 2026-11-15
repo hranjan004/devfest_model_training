@@ -1,0 +1,154 @@
+{
+  "app": "coy",
+  "native_tests_passed": 12,
+  "ui_walkthrough_passed": true,
+  "survived_relaunch": true,
+  "imported_named_demo_sightings": 21,
+  "catalog_classes": 34,
+  "saved_post": {
+    "locationIsPrecise": true,
+    "comments": [
+      {
+        "author": "You",
+        "date": 816460488.233336,
+        "id": "CF6E212E-718A-4537-B405-F455BA38FC6D",
+        "text": "Meet Goldie! Found near the trail."
+      }
+    ],
+    "place": "East Field",
+    "liked": false,
+    "author": "You",
+    "observedOn": "2026-11-15",
+    "longitude": -122.04729782985386,
+    "latitude": 36.98939814265821,
+    "width": 1024,
+    "likes": 0,
+    "localImageFile": "mine-040A9C3B-A926-486C-95B7-1D58D0D0102B.jpg",
+    "name": "Goldie",
+    "notes": "CC0 photo by Anne Parsons. Demo location.",
+    "prediction": {
+      "primary_index": 0,
+      "detector_version": "none-whole-image",
+      "status": "identified",
+      "model_version": "ucsc34-bioclip2-v4",
+      "detections": [
+        {
+          "box_source": "full_image",
+          "detector_confidence": 0,
+          "box": [
+            0,
+            0,
+            1024,
+            768
+          ],
+          "top_3": [
+            {
+              "probability": 0.995834,
+              "class_id": "I01"
+            },
+            {
+              "class_id": "G04",
+              "probability": 0.000362
+            },
+            {
+              "class_id": "G05",
+              "probability": 0.000241
+            }
+          ],
+          "status": "identified",
+          "species": {
+            "group": "gastropod",
+            "scientific_name": "Ariolimax",
+            "class_id": "I01",
+            "common_name": "Banana slug (genus)"
+          },
+          "confidence_calibrated": 0.995834,
+          "quality": {
+            "sharpness": 98,
+            "overall": 86,
+            "visibility": 61,
+            "resolution": 100,
+            "exposure": 78,
+            "composition": 96
+          },
+          "rating": 91
+        }
+      ],
+      "explanation": "Whole-photo classification across 34 trained classes. No animal detection was run. Photo-quality scores are image heuristics."
+    },
+    "height": 768,
+    "id": "mine-040A9C3B-A926-486C-95B7-1D58D0D0102B"
+  },
+  "python_bridge_api_quality_tests_passed": 55,
+  "ranked_map_ui_passed": true,
+  "ranked_map_names": [
+    "Deerly",
+    "Whiskers"
+  ],
+  "integrated_native_tests_passed": 12,
+  "video_seconds": 90.133333,
+  "physical_iphone_tested": false,
+  "fresh_integrated_api_check": {
+    "health": {
+      "ready": true,
+      "model_version": "ucsc34-bioclip2-v4",
+      "detector_version": "none-whole-image",
+      "num_classes": 34,
+      "inference_mode": "whole_photo",
+      "quality_method": "image_heuristics",
+      "model_loaded": true
+    },
+    "prediction": {
+      "status": "identified",
+      "detections": [
+        {
+          "box": [
+            0,
+            0,
+            1024,
+            768
+          ],
+          "box_source": "full_image",
+          "detector_confidence": 0,
+          "status": "identified",
+          "species": {
+            "class_id": "I01",
+            "common_name": "Banana slug (genus)",
+            "scientific_name": "Ariolimax",
+            "group": "gastropod"
+          },
+          "confidence_calibrated": 0.995783,
+          "top_3": [
+            {
+              "class_id": "I01",
+              "probability": 0.995783
+            },
+            {
+              "class_id": "G04",
+              "probability": 0.00036
+            },
+            {
+              "class_id": "G05",
+              "probability": 0.000249
+            }
+          ],
+          "quality": {
+            "overall": 86,
+            "sharpness": 98,
+            "visibility": 61,
+            "exposure": 78,
+            "resolution": 100,
+            "composition": 96
+          },
+          "rating": 91
+        }
+      ],
+      "primary_index": 0,
+      "model_version": "ucsc34-bioclip2-v4",
+      "detector_version": "none-whole-image",
+      "explanation": "Whole-photo classification across 34 trained classes. No animal detection was run. Photo-quality scores are image heuristics.",
+      "recorded_on": null
+    },
+    "http_status": 200
+  }
+}

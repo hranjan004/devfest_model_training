@@ -1,27 +1,46 @@
-# UCSC Wildlife Vision
+# coy
 
-An iPhone app and API that identify 34 plants and animals of the UC Santa Cruz campus from a photo, and let people post, map, rate, and discuss their sightings. Identification runs on **BioCLIP 2** fine-tuned on 33,358 openly licensed iNaturalist photos. The model reaches **95.5% top-1 accuracy** and **0.951 macro-F1** on a held-out test set of 6,267 images from photographers it never saw in training.
+<img src="docs/brand/coy_icon_1024.png" width="96" alt="coy coyote and map-pin logo">
 
-<p align="center">
-  <img src="docs/demo/identify_and_post.gif" width="220" alt="Identifying a banana slug photo and posting it">
-  &nbsp;
-  <img src="docs/demo/screenshots/01_home_feed.jpg" width="220" alt="Home feed">
-  &nbsp;
-  <img src="docs/demo/screenshots/14_identification_result.jpg" width="220" alt="Identification result">
-  &nbsp;
-  <img src="docs/demo/screenshots/06_map_all_sightings.jpg" width="220" alt="Map of sightings">
-</p>
+**Meet your wild neighbors.** A native iPhone app for 34 trained campus wildlife classes: identify a photo, name your sighting, mark its location, leave a comment, and explore Home, Species, Ranked, and Map.
 
-## Documentation
+[Watch the 90-second coy demo](coy_product_demo.mp4) · [Install on an iPhone with USB-C](docs/IPHONE_SETUP.md) · [Photo credits](coy_product_demo_credits.md)
 
-| Document | Contents |
-|---|---|
-| [Visual demo](docs/DEMO.md) | Screenshot walkthrough of the whole app, including identifying a sample photo and posting it, plus a screen recording |
-| [Datasets](docs/DATASETS.md) | Where every image came from, how it was filtered and split, the 34 classes, and per-class results |
-| [How it works](docs/ARCHITECTURE.md) | Training, calibration, the API and its endpoints, the inference path, and how the iOS app is organised |
-| [Photo credits](docs/demo/PHOTO_CREDITS.md) | Photographer and license for every photo in the demo |
+The demo is real iOS simulator footage, edited with short feature cards and smooth transitions. It shows a live banana-slug prediction (99.6%), publishing Goldie, commenting, browsing ranked Deerly and Whiskers sightings, and locating them on the map. Seeded sightings are historical demo data with source credits; their locations are approximate. New sightings and comments are saved **on this device**; this version does not synchronize posts between users.
 
-## What it recognises
+## Run locally
+
+Use a Mac with Xcode compatible with your iOS version, iOS 18 or later, and Python 3.10 or later. Restore the real trained files into `runs/ucsc34_bioclip_v4/`: `model_adapter.pt`, `model_checksum.json`, `classes.json`, and `ucsc_bioclip.json`. They are intentionally excluded from Git. The working DEVFEST folder already contains them; a fresh checkout needs a copy from your completed training run.
+
+```bash
+python3 -m venv .venv
+.venv/bin/python -m pip install -e '.[app,dev]'
+bash scripts/run_coy.sh
+```
+
+Leave the services running. In another terminal:
+
+```bash
+curl --fail http://127.0.0.1:8081/healthz
+open ios/ucscdevfestapp/ucscdevfestapp.xcodeproj
+```
+
+Choose the `ucscdevfestapp` scheme and an iOS 18+ simulator, then Run. coy defaults to `http://localhost:8081`. For a physical iPhone, follow the [USB-C, Developer Mode, signing, and Wi-Fi instructions](docs/IPHONE_SETUP.md). USB-C installs/debugs the app; inference uses your Mac's LAN address on port **8081**. The Debug build permits local HTTP. Release builds need an appropriate production transport configuration.
+
+The launcher reuses a healthy existing model service and only stops processes it started. It never resets app data or substitutes a synthetic model. The initial prediction may download the pinned BioCLIP 2 base weights from Hugging Face.
+
+## Features
+
+- **Identify:** real BioCLIP-v4 confidence and alternatives for all 34 trained classes, plus image-quality heuristics.
+- **Name and post:** a custom name, caption, campus area, and a point you mark on the map.
+- **Home and Species:** saved sightings and a catalog with 34 bundled reference photos.
+- **Ranked:** photo ratings, group filters, and links to sighting details.
+- **Map:** search by name, species, or place; select a named marker/list entry and open its post.
+- **Comments and likes:** saved locally and retained after reopening the app.
+
+Maps use Apple MapKit and need no Google Maps key. The app bundles 40 original historical sightings plus 21 named entries imported from the previous app. Photo credits appear in details and the accompanying credit file. A map pin is a sighting location, not a tracked animal route.
+
+## Model and data
 
 | Group | Classes |
 |---|---|
@@ -31,66 +50,31 @@ An iPhone app and API that identify 34 plants and animals of the UC Santa Cruz c
 | Trees (7) | Coast redwood, Douglas-fir, Pacific madrone, coast live oak, tanoak, California bay, bigleaf maple |
 | Insects and others (6) | Monarch butterfly, western tiger swallowtail, yellow-faced bumble bee, yellow-spotted millipede, convergent lady beetle, western yellowjacket |
 
-It only knows these 34 classes. Anything else still gets one of the 34 labels, so the app warns when the top guess is under 50%.
+The v4 adapter was trained on 33,358 openly licensed iNaturalist images. The recorded held-out test results (6,267 images from unseen photographers) are 95.48% top-1, 98.26% top-3, 0.9512 macro-F1, and 0.0145 ECE. These are dataset metrics, not guarantees for a new photo. The closed-set model always chooses among 34 labels; low confidence is flagged, but high confidence does not establish that an out-of-catalog subject belongs to the catalog. See [datasets and per-class results](docs/DATASETS.md).
 
-## Results
+coy sends the full photo to `api/coy_bridge.py` on 8081, which forwards its original bytes to the trained `/v3/identify` endpoint on 8080. The bridge adapts response fields without replacing the model's class or confidence. It does not run an animal detector. The older `/v2/predict` route on **8080** is a separate legacy pipeline and is not coy's classifier.
 
-| Metric (test split, 6,267 images) | Value |
-|---|---:|
-| Top-1 accuracy | 95.48% |
-| Top-3 accuracy | 98.26% |
-| Macro-F1 | 0.9512 |
-| Calibration error (ECE, 15 bins) | 0.0145 |
+## Documentation and validation
 
-Trees, insects, and the banana slug all score 0.95 F1 or higher. The hardest classes are night and trail-camera mammals (gray fox 0.82, bobcat 0.88, raccoon 0.88, coyote 0.89). See [Datasets](docs/DATASETS.md#classes) for every class.
-
-## How it works
-
-1. **Data.** Research-grade iNaturalist observations with CC0 or CC BY photos, California first, deduplicated by exact and perceptual hash, 1,000 photos per class (358 for banana slug). Splits are grouped by photographer so the test set has only unseen photographers.
-2. **Training.** On a Google Colab GPU, a linear head is trained on BioCLIP 2 image embeddings, then the last two transformer blocks are fine-tuned. A temperature fitted on a separate calibration split makes the percentages trustworthy.
-3. **Serving.** A FastAPI service loads the 99 MB adapter on top of the BioCLIP 2 base weights from Hugging Face and classifies uploads in about 0.08 seconds on an Apple Silicon Mac. It stores sightings, ratings, and comments in SQLite.
-4. **App.** A SwiftUI iOS app with Home, Species, Ranked, and Map tabs. Maps use the Google Maps SDK when a key is configured and Apple Maps otherwise.
-
-The full details are in [How it works](docs/ARCHITECTURE.md).
-
-## Running it
-
-You need a Mac with Xcode 16 or later and Python 3.10 or later. The trained weights are not stored in Git because of their size. Put the training run's files in `runs/ucsc34_bioclip_v4/` (`model_adapter.pt`, `model_checksum.json`, `classes.json`, `ucsc_bioclip.json`).
+| Document | Contents |
+|---|---|
+| [iPhone setup](docs/IPHONE_SETUP.md) | USB-C, Developer Mode, signing, local model connection, troubleshooting |
+| [Architecture](docs/ARCHITECTURE.md) | Native app, genuine inference, local storage, and legacy API separation |
+| [Demo](docs/DEMO.md) | Recording details, reproduction, and verification |
+| [Datasets](docs/DATASETS.md) | Image sources, filtering, splits, and class metrics |
+| [Credits](coy_product_demo_credits.md) | Licenses, photographers, sources, and demo-location disclosure |
 
 ```bash
-# 1. Start the API on port 8080. The first run creates .venv, installs dependencies,
-#    and downloads the BioCLIP 2 base weights (about 1.7 GB) from Hugging Face.
-scripts/run_api.sh
-
-# 2. Optional: species photos and demo sightings so the app is not empty.
-PYTHONPATH=src:. .venv/bin/python scripts/fetch_reference_photos.py
-PYTHONPATH=src:. .venv/bin/python scripts/seed_demo_sightings.py      # --clear removes them
-
-# 3. Open the app and press Run with an iOS 18 simulator selected.
-open ios/ucscdevfestapp/ucscdevfestapp.xcodeproj
+.venv/bin/python -m pytest tests/test_coy_bridge.py tests/test_api_v3.py tests/test_quality.py
+# Simulator build and native model/storage tests; pick an installed simulator:
+xcodebuild -project ios/ucscdevfestapp/ucscdevfestapp.xcodeproj \
+  -scheme ucscdevfestapp -destination 'platform=iOS Simulator,name=iPhone 16' \
+  CODE_SIGNING_ALLOWED=NO -only-testing:ucscdevfestappTests test
+# Optional: real UI recordings; creates a NEW simulator and adds a demo post.
+bash scripts/capture_demo.sh
 ```
 
-* **Google Maps.** Copy `ios/ucscdevfestapp/ucscdevfestapp/Secrets.example.plist` to `Secrets.plist` in the same folder and set `GOOGLE_MAPS_API_KEY` to a key with the Maps SDK for iOS enabled. `Secrets.plist` is gitignored.
-* **On an iPhone.** Select your phone in Xcode and sign with your Apple ID. In the app, open Settings (gear icon) and enter `http://<your-mac-ip>:8080`, with the phone and Mac on the same Wi-Fi.
-* **Interactive API docs** are at `http://localhost:8080/docs` while the server runs.
-* **Tests.** `pytest` for the Python side. `scripts/capture_demo.sh` replays the full app walkthrough and regenerates the demo screenshots.
-
-## Repository layout
-
-| Path | Contents |
-|---|---|
-| `notebooks/12_UCSC_34_CLASSES_BUGS_SLUGS_TREES_GPU.ipynb` | Dataset build and training for the current 34-class model |
-| `src/wildlife/models/ucsc34.py` | Loads the adapter and runs inference |
-| `api/` | FastAPI service. `v3.py` and `store.py` serve the app |
-| `ios/ucscdevfestapp/` | SwiftUI iOS app and UI tests |
-| `scripts/` | API launcher, demo data, reference photos, demo capture, photo credits |
-| `docs/` | Demo walkthrough, datasets, architecture, screenshots |
-| `runs/` | Training outputs (gitignored) |
-| `reports/`, `configs/`, `data/manifests/`, `data/splits/` | The earlier 20-species v2 pipeline described below |
-
-## Credits
-
-Training images and demo photos are from [iNaturalist](https://www.inaturalist.org) contributors under CC0 and CC BY licenses. Credits for the demo photos are in [docs/demo/PHOTO_CREDITS.md](docs/demo/PHOTO_CREDITS.md), and every training image is recorded with its photographer and source in the training manifest. The base model is [BioCLIP 2](https://huggingface.co/imageomics/bioclip-2) by the Imageomics Institute (MIT license).
+`runs/`, raw datasets, virtual environments, local server data, and signing credentials stay outside Git. Licensed resized photos bundled in the app are intentionally included. Training code and earlier pipeline reports remain below for continuity.
 
 ---
 
