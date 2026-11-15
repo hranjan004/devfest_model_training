@@ -15,7 +15,7 @@ species:
     subspecies_filter: "Odocoileus hemionus columbianus"
     group: "large_mammal"
     inventory_group: "Large"
-    taxon_id: 42158
+    taxon_id: 42220
     aliases:
       - "Columbian black-tailed deer"
       - "Mule deer (coastal black-tailed form)"
@@ -87,7 +87,7 @@ species:
     scientific_name: "Otospermophilus beecheyi"
     group: "small_mammal"
     inventory_group: "Small"
-    taxon_id: 179919
+    taxon_id: 180007
     aliases: ["Spermophilus beecheyi", "Beechey ground squirrel"]
     campus_habitat: "Grasslands, agricultural edges"
     primary_source: "iNaturalist, campus photos"
@@ -110,7 +110,7 @@ species:
     scientific_name: "Sciurus griseus"
     group: "small_mammal"
     inventory_group: "Small"
-    taxon_id: 46020
+    taxon_id: 46023
     aliases: []
     campus_habitat: "Forested areas"
     primary_source: "iNaturalist, campus photos"
@@ -122,7 +122,7 @@ species:
     scientific_name: "Sylvilagus bachmani"
     group: "small_mammal"
     inventory_group: "Small"
-    taxon_id: 43114
+    taxon_id: 43112
     aliases: ["Western brush rabbit"]
     campus_habitat: "Chaparral, meadow edges"
     primary_source: "iNaturalist, campus photos"
@@ -155,7 +155,7 @@ species:
     scientific_name: "Cyanocitta stelleri"
     group: "bird"
     inventory_group: "Bird"
-    taxon_id: 8229
+    taxon_id: 8234
     aliases: ["Stellers jay"]
     campus_habitat: "Redwood and mixed forest"
     primary_source: "iNaturalist, optional CUB audit"
@@ -167,7 +167,7 @@ species:
     scientific_name: "Aphelocoma californica"
     group: "bird"
     inventory_group: "Bird"
-    taxon_id: 509665
+    taxon_id: 506118
     aliases: ["Western scrub-jay", "Western Scrub-Jay", "California scrub jay"]
     campus_habitat: "Chaparral and woodland edge"
     primary_source: "iNaturalist; inspect older Western scrub-jay labels"
@@ -191,7 +191,7 @@ species:
     scientific_name: "Melanerpes formicivorus"
     group: "bird"
     inventory_group: "Bird"
-    taxon_id: 18195
+    taxon_id: 18209
     aliases: []
     campus_habitat: "Oak and mixed woodland"
     primary_source: "iNaturalist, optional CUB audit"
@@ -224,7 +224,7 @@ species:
     scientific_name: "Junco hyemalis"
     group: "bird"
     inventory_group: "Bird"
-    taxon_id: 9235
+    taxon_id: 10094
     aliases: ["Oregon junco"]
     campus_habitat: "Redwood and mixed forest"
     primary_source: "iNaturalist, optional CUB audit"
@@ -235,7 +235,7 @@ species:
     scientific_name: "Pipilo maculatus"
     group: "bird"
     inventory_group: "Bird"
-    taxon_id: 9373
+    taxon_id: 9420
     aliases: ["Rufous-sided towhee (western)"]
     campus_habitat: "Chaparral and understory"
     primary_source: "iNaturalist, optional CUB audit"

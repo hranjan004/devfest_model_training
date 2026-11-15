@@ -32,7 +32,7 @@ COPY (
       ON o.observer_id = obs.observer_id
     WHERE o.quality_grade = 'research'
       AND LOWER(p.license) IN ('cc0', 'cc-by')
-      AND t.taxon_id IN (42158, 42051, 41976, 42076, 41663, 41880, 179919, 46017, 46020, 43114, 906, 1409, 8229, 509665, 8010, 18195, 6317, 12727, 9235, 9373)
+      AND t.taxon_id IN (42220, 42051, 41976, 42076, 41663, 41880, 180007, 46017, 46023, 43112, 906, 1409, 8234, 506118, 8010, 18209, 6317, 12727, 10094, 9420)
       AND p.width >= 256
       AND p.height >= 256
       AND o.latitude BETWEEN 32.5 AND 42.0

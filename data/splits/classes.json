@@ -73,7 +73,7 @@
       "common_name": "Black-tailed deer",
       "scientific_name": "Odocoileus hemionus",
       "group": "large_mammal",
-      "taxon_id": 42158
+      "taxon_id": 42220
     },
     "M02": {
       "index": 1,
@@ -115,7 +115,7 @@
       "common_name": "California ground squirrel",
       "scientific_name": "Otospermophilus beecheyi",
       "group": "small_mammal",
-      "taxon_id": 179919
+      "taxon_id": 180007
     },
     "M08": {
       "index": 7,
@@ -129,14 +129,14 @@
       "common_name": "Western gray squirrel",
       "scientific_name": "Sciurus griseus",
       "group": "small_mammal",
-      "taxon_id": 46020
+      "taxon_id": 46023
     },
     "M10": {
       "index": 9,
       "common_name": "Brush rabbit",
       "scientific_name": "Sylvilagus bachmani",
       "group": "small_mammal",
-      "taxon_id": 43114
+      "taxon_id": 43112
     },
     "B01": {
       "index": 10,
@@ -157,14 +157,14 @@
       "common_name": "Steller's jay",
       "scientific_name": "Cyanocitta stelleri",
       "group": "bird",
-      "taxon_id": 8229
+      "taxon_id": 8234
     },
     "B04": {
       "index": 13,
       "common_name": "California scrub-jay",
       "scientific_name": "Aphelocoma californica",
       "group": "bird",
-      "taxon_id": 509665
+      "taxon_id": 506118
     },
     "B05": {
       "index": 14,
@@ -178,7 +178,7 @@
       "common_name": "Acorn woodpecker",
       "scientific_name": "Melanerpes formicivorus",
       "group": "bird",
-      "taxon_id": 18195
+      "taxon_id": 18209
     },
     "B07": {
       "index": 16,
@@ -199,14 +199,14 @@
       "common_name": "Dark-eyed junco",
       "scientific_name": "Junco hyemalis",
       "group": "bird",
-      "taxon_id": 9235
+      "taxon_id": 10094
     },
     "B10": {
       "index": 19,
       "common_name": "Spotted towhee",
       "scientific_name": "Pipilo maculatus",
       "group": "bird",
-      "taxon_id": 9373
+      "taxon_id": 9420
     }
   }
 }

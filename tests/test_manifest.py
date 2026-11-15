@@ -42,7 +42,7 @@ def _make_sample_row(image_id: str = "img_M01_001", license_code: str = "cc-by")
         "photographer_credit": "Jane Doe",
         "scientific_name": "Odocoileus hemionus",
         "class_id": "M01",
-        "taxon_id": 42158,
+        "taxon_id": 42220,
         "date_observed": "2026-10-01",
         "coarse_habitat": "Meadows",
         "region_tag": "ucsc",
