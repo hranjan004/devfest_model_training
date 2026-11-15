@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+/*
+ * Campus Wildlife tokens. One ground (fog), one ink (canopy), one action colour (redwood),
+ * one signal colour (slug = the model found it). Group colours are only used for dots,
+ * bars and chip tints, never as body text; chips carry their label in an accessible ink.
+ */
+@theme {
+  --color-fog: #eef1ee;
+  --color-paper: #f8faf7;
+  --color-canopy: #1e3b2f;
+  --color-canopy-soft: #4a6357;
+  --color-redwood: #6b2e1f;
+  --color-redwood-dark: #4f2016;
+  --color-lichen: #a9b8a3;
+  --color-line: #d5ddd3;
+  --color-mist: #e5e9e3;
+  --color-slug: #f2c230;
+  --color-live: #7fd18b;
+
+  /* animal groups: dot/bar colour, chip tint, chip ink */
+  --color-large: #6b2e1f;
+  --color-large-tint: #f3e4df;
+  --color-large-ink: #5a2619;
+  --color-small: #b58a1c;
+  --color-small-tint: #f6ecd2;
+  --color-small-ink: #5c4510;
+  --color-bird: #2b5876;
+  --color-bird-tint: #e3ecf2;
+  --color-bird-ink: #1f4560;
+
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Atkinson Hyperlegible", ui-sans-serif, system-ui, sans-serif;
+
+  --ease-lock: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+html {
+  background: var(--color-fog);
+  color: var(--color-canopy);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.45;
+  min-height: 100dvh;
+}
+
+/* ---------- type scale: every heading in the app uses one of these ---------- */
+@utility t-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-stretch: 80%;
+  font-size: 34px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  @media (width >= 48rem) {
+    font-size: 40px;
+  }
+}
+@utility t-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-stretch: 80%;
+  font-size: 28px;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+}
+@utility t-heading {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-stretch: 85%;
+  font-size: 20px;
+  line-height: 1.2;
+}
+@utility t-meta {
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--color-canopy-soft);
+}
+@utility t-num {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-slug);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ---------- the detector box: field-guide corner brackets ---------- */
+.bracket {
+  --c: var(--color-slug);
+  --w: 3px;
+  --l: 22%;
+  background:
+    linear-gradient(var(--c), var(--c)) top left / var(--l) var(--w),
+    linear-gradient(var(--c), var(--c)) top left / var(--w) var(--l),
+    linear-gradient(var(--c), var(--c)) top right / var(--l) var(--w),
+    linear-gradient(var(--c), var(--c)) top right / var(--w) var(--l),
+    linear-gradient(var(--c), var(--c)) bottom left / var(--l) var(--w),
+    linear-gradient(var(--c), var(--c)) bottom left / var(--w) var(--l),
+    linear-gradient(var(--c), var(--c)) bottom right / var(--l) var(--w),
+    linear-gradient(var(--c), var(--c)) bottom right / var(--w) var(--l);
+  background-repeat: no-repeat;
+  filter: drop-shadow(0 0 2px rgb(0 0 0 / 0.55));
+}
+.bracket[data-status="uncertain"] {
+  --c: #ffffff;
+}
+.bracket[data-status="unsupported"] {
+  --c: var(--color-lichen);
+}
+
+/*
+ * Lock-on, the app's one orchestrated motion: brackets start at the photo edge and close onto
+ * the detector box (left/top/width/height transition), then the tag drops in.
+ */
+.lock {
+  transition:
+    left 520ms var(--ease-lock),
+    top 520ms var(--ease-lock),
+    width 520ms var(--ease-lock),
+    height 520ms var(--ease-lock),
+    opacity 200ms linear;
+}
+.lock-tag {
+  animation: tag-in 360ms var(--ease-lock) 520ms both;
+}
+@keyframes tag-in {
+  from {
+    opacity: 0;
+    transform: translateY(-100%) translateY(6px);
+  }
+}
+.fill-bar {
+  transition: width 700ms var(--ease-lock) 600ms;
+}
+
+/* While the detector runs: one scan line sweeping the photo. */
+.scan::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 2px;
+  background: var(--color-slug);
+  box-shadow: 0 0 12px 2px rgb(242 194 48 / 0.7);
+  animation: scan 1.4s ease-in-out infinite alternate;
+}
+@keyframes scan {
+  to {
+    top: calc(100% - 2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+  .scan::after {
+    display: none;
+  }
+}
+
+.leaflet-container {
+  font-family: var(--font-sans);
+}
+
+.lock-tag-in {
+  animation: tag-in-inside 360ms var(--ease-lock) 520ms both;
+}
+@keyframes tag-in-inside {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
