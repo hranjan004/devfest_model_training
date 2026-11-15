@@ -3,6 +3,8 @@ data/raw/
 data/processed/
 data/field_holdout/
 data/ood/
+data/app/
+data/app_reference/
 
 # Model checkpoints and exported weights
 *.ckpt
@@ -40,3 +42,8 @@ venv/
 .DS_Store
 .idea/
 .vscode/
+
+# iOS app local secrets and Xcode user state
+ios/**/Secrets.plist
+xcuserdata/
+DerivedData/

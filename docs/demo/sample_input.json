@@ -1,0 +1,13 @@
+{
+  "photo_id": 13149165,
+  "photographer": "Anne Parsons",
+  "license": "CC0",
+  "observation_url": "https://www.inaturalist.org/observations/9631092",
+  "model_top": {
+    "class_id": "I01",
+    "common_name": "Banana slug (genus)",
+    "scientific_name": "Ariolimax",
+    "group": "gastropod",
+    "probability": 0.995936
+  }
+}

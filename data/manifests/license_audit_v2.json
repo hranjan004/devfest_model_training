@@ -1,5 +1,5 @@
 {
-  "audit_timestamp": "2026-11-14T23:10:29.111266+00:00",
+  "audit_timestamp": "2026-11-14T23:53:35.759081+00:00",
   "allowed_photo_licenses": [
     "cc-by",
     "cc0"
@@ -10,14 +10,14 @@
   ],
   "allow_research_only": false,
   "for_detector": false,
-  "approved_count": 490,
+  "approved_count": 3090,
   "rejected_count": 0,
   "counts_by_license": {
-    "cc0": 107,
-    "cc-by": 383
+    "cc-by": 2196,
+    "cc0": 894
   },
   "counts_by_source": {
-    "inat_open_data": 490
+    "inat_open_data": 3090
   },
   "rejected_records": []
 }

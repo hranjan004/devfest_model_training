@@ -40,6 +40,17 @@ cloud = [
     "uvicorn[standard]>=0.27.0",
     "python-multipart>=0.0.7",
 ]
+app = [
+    "torch>=2.1.0",
+    "torchvision>=0.16.0",
+    "open_clip_torch>=2.26.1",
+    "safetensors>=0.4.0",
+    "huggingface_hub>=0.23.0",
+    "Pillow>=10.0.0",
+    "fastapi>=0.109.0",
+    "uvicorn[standard]>=0.27.0",
+    "python-multipart>=0.0.7",
+]
 dev = [
     "pytest>=7.4.0",
     "httpx>=0.26.0",

@@ -310,5 +310,18 @@ try:
         code, resp = service.handle_feedback(payload)
         return JSONResponse(status_code=code, content=resp)
 
+    # /v3: fine-tuned 34-class BioCLIP 2 adapter + sightings feed used by the iOS app.
+    # The model loads on the first identify request (or at startup with WILDLIFE_PRELOAD=1).
+    from api.v3 import build_router  # type: ignore
+
+    v3_router = build_router()
+    app.include_router(v3_router)
+
+    if os.environ.get("WILDLIFE_PRELOAD", "0") == "1":
+
+        @app.on_event("startup")
+        def _preload_ucsc34() -> None:
+            v3_router.state.classifier  # type: ignore[attr-defined]
+
 except Exception:
     app = None
